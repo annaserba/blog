@@ -43,7 +43,7 @@ export default {
   },
   mounted() {
     axios
-      .get(process.env.API_URL_ENV+"Feeds",{
+      .get(process.env.VUE_APP_API_URL+"Feeds",{
           
       })
       .then(response => {
