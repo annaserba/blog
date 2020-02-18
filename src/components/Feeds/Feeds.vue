@@ -49,8 +49,8 @@ export default {
       .then(response => {
         this.feeds = response.data;
       })
+      // eslint-disable-next-line no-unused-vars
       .catch(error => {
-        console.log(error);
         this.errored = true;
       })
       .finally(() => (this.loading = false));
