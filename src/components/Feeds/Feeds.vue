@@ -25,7 +25,6 @@
 <script>
  import axios from 'axios';
 import ShortFeed from '@/components/Feeds/ShortFeed';
- import config from '../../../appSettings';
 export default {
     components:{
         ShortFeed
@@ -44,14 +43,14 @@ export default {
   },
   mounted() {
     axios
-      .get(config.backUrl+"api/Feeds",{
+      .get(process.env.API_URL_ENV+"Feeds",{
           
       })
       .then(response => {
         this.feeds = response.data;
       })
+      // eslint-disable-next-line no-unused-vars
       .catch(error => {
-        console.log(error);
         this.errored = true;
       })
       .finally(() => (this.loading = false));
