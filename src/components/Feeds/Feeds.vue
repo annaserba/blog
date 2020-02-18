@@ -25,7 +25,6 @@
 <script>
  import axios from 'axios';
 import ShortFeed from '@/components/Feeds/ShortFeed';
- import config from '../../../appSettings';
 export default {
     components:{
         ShortFeed
@@ -44,7 +43,7 @@ export default {
   },
   mounted() {
     axios
-      .get(config.backUrl+"api/Feeds",{
+      .get("<%= API_URL %>api/Feeds",{
           
       })
       .then(response => {
