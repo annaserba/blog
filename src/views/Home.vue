@@ -7,13 +7,22 @@
   >
     <v-row
       align="center"
-      justify="center" style="height:300px"
+      justify="center" style="height:200px"
     >
-      <v-col class="text-center" cols="12">
+    <v-col class="text-center mt-10" cols="12">
         
-        <h1 class="display-1 font-weight-thin mb-4">Ann Serba</h1>
+      </v-col>
+      <v-col class="text-center mt-10" cols="12">
+        
+        <h1 class="display-1 font-weight-thin ">Ann Serba</h1>
         <h4 class="subheading">.Net Programmer and entrepreneur</h4>
+      </v-col>
+       <v-col class="text-center mb-10" cols="12">
         
+         <span class="display-1 font-weight-thin ">
+              {{yearExperience}}
+            </span>
+            <p class="font-weight-thin">Years of experience</p>
       </v-col>
     </v-row>
     
@@ -37,16 +46,17 @@
                   >
                     <i class="fab fa-github"></i>
                   </v-btn>
-          <h2 class="display-1 font-weight-thin mb-4">About me</h2>
-          <p style="padding:0 30px;">I am a business automation web engineer. 
+          <h2 id="AboutMe" class="display-1 font-weight-thin mb-4 mt-4">About me</h2>
+          <p class="pl-6 pr-6" >I am a business automation web engineer. 
             The area of my expertise covers the full stack .Net technologies. 
             But I specialize in front-end technologies. 
             I have extensive experience in fixing software bugs.
             I work only remotely</p>
+           
           </v-col>
           <v-col class="text-center" cols="12">
           
-          <h2 class="display-1 font-weight-thin mb-4">Skils</h2>
+          <h2 id="BasicSkils" class="display-1 font-weight-thin mb-4">Basic skills</h2>
           <v-chip
         class="ma-2"
         color="primary"
@@ -81,4 +91,24 @@
     
   </div>
 </template>
+<script>
+export default {
+    components:{
+    },
+  data() {
+    return {
+      yearExperience:  (new Date(Date.now()).getFullYear())-2016
+    };
+  },
+  filters: {
+    
+  },
+  mounted() {
+   
+  }
+}
+</script>
+<style scoped>
 
+
+</style>
