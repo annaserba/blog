@@ -94,6 +94,12 @@ export default {
     return {
       yearExperience: (new Date(Date.now()).getFullYear()) - 2016
     }
+  },
+  head () {
+    return {
+      titleTemplate: '',
+      title: 'Anna Serba'
+    }
   }
 }
 </script>
