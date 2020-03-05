@@ -19,24 +19,11 @@
         align="center"
         justify="center"
       >
-        <v-col class="text-center" cols="12">
-          <v-btn
-            color="#24292e"
-            fab
-            dark
-            small
-            absolute
-            top
-            right
-            href="https://github.com/annaserba"
-            target="_blank"
-          >
-            <fa :icon="['fab', 'github']" />
-          </v-btn>
+        <v-col class="text-center " cols="12">
           <h2 class="display-1 font-weight-thin mt-4 mb-4">
             About me
           </h2>
-          <p class="pl-12 pr-12">
+          <p class="pl-12 pr-12 mb-0">
             I am a business automation web engineer.
             The area of my expertise covers the full stack .Net technologies.
             But I specialize in front-end technologies.
@@ -45,7 +32,7 @@
           </p>
         </v-col>
         <v-col class="text-center" cols="12">
-          <h2 class="display-1 font-weight-thin mb-4">
+          <h2 class="display-1 font-weight-thin mt-4 mb-4">
             Basic skils
           </h2>
           <v-chip
@@ -70,13 +57,50 @@
             JavaScript
           </v-chip>
           <v-chip
-            class="ma-2"
+            class="ma-2 "
             color="primary"
             label
           >
             C#
           </v-chip>
         </v-col>
+      </v-row>
+      <v-row
+        align="center"
+        justify="center"
+      >
+        <h2 class="display-1 font-weight-thin mt-4 mb-4">
+          Contacts
+        </h2>
+        <v-col class="text-center" cols="12">
+          <v-btn
+            color="primary"
+            small
+            href="https://hh.ru/resume/6a5cea43ff0327c3fd0039ed1f4c694f583857"
+            target="_blank"
+          >
+            Resume
+          </v-btn>
+          <v-btn
+            color="#24292e"
+            dark
+            small
+            href="https://github.com/annaserba"
+            target="_blank"
+          >
+            GitHub  <fa class="ml-1" :icon="['fab', 'github']" />
+          </v-btn>
+        </v-col>
+        <!-- <v-col class="text-center" cols="12">
+          <v-btn
+            color="primary"
+            small
+            href="mailto:annserba94@gmail.com"
+            target="_blank"
+          >
+            Send me email
+          </v-btn>
+        </v-col> -->
       </v-row>
     </v-container>
   </div>
