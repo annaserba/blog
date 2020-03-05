@@ -2,22 +2,13 @@
   <div>
     <v-parallax dark src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
       <v-row align="center" justify="center">
-        <v-col class="text-center mt-10" cols="12" />
-        <v-col class="text-center mt-10" cols="12">
+        <v-col class="text-center" cols="12">
           <h1 class="display-1 font-weight-thin ">
             Ann Serba
           </h1>
           <h4 class="subheading">
             .Net Programmer and entrepreneur
           </h4>
-        </v-col>
-        <v-col class="text-center mb-10" cols="12">
-          <span class="display-1 font-weight-thin ">
-            {{ yearExperience }}
-          </span>
-          <p class="font-weight-thin">
-            Years of experience
-          </p>
         </v-col>
       </v-row>
     </v-parallax>
