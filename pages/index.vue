@@ -46,7 +46,7 @@
         </v-col>
         <v-col class="text-center" cols="12">
           <h2 class="display-1 font-weight-thin mb-4">
-            Basic Skils
+            Basic skils
           </h2>
           <v-chip
             class="ma-2"
