@@ -1,4 +1,4 @@
-# blog
+# Personal Site Anna Serba
 
 > My outstanding Nuxt.js project
 
