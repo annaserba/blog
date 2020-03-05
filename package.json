@@ -1,7 +1,7 @@
 {
-  "name": "blog",
+  "name": "AnnaSerba",
   "version": "1.0.0",
-  "description": "My outstanding Nuxt.js project",
+  "description": "My personal site",
   "author": "annaserba",
   "private": true,
   "scripts": {
