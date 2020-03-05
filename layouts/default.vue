@@ -79,7 +79,7 @@
       :fixed="fixed"
       app
     >
-      <span>AnnSerba &copy; {{ new Date().getFullYear() }}</span>
+      <span>AnnaSerba &copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
