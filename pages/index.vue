@@ -4,10 +4,10 @@
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
           <h1 class="display-1 font-weight-thin ">
-            Anna Serba
+            {{ $t('my_name') }}
           </h1>
           <h4 class="subheading">
-            .Net Programmer and entrepreneur
+            {{ $t('subheading') }}
           </h4>
         </v-col>
       </v-row>
@@ -21,19 +21,15 @@
       >
         <v-col class="text-center " cols="12">
           <h2 class="display-1 font-weight-thin mt-4 mb-4">
-            About me
+            {{ $t('aboutMeHead') }}
           </h2>
           <p class="pl-12 pr-12 mb-0">
-            I am a business automation web engineer.
-            The area of my expertise covers the full stack .Net technologies.
-            But I specialize in front-end technologies.
-            I have extensive experience in fixing software bugs.
-            I work only remotely
+            {{ $t('aboutMe') }}
           </p>
         </v-col>
         <v-col class="text-center" cols="12">
           <h2 class="display-1 font-weight-thin mt-4 mb-4">
-            Basic skils
+            {{ $t('basicSkilsHead') }}
           </h2>
           <v-chip
             class="ma-2"
@@ -70,7 +66,7 @@
         justify="center"
       >
         <h2 class="display-1 font-weight-thin mt-4 mb-4">
-          Contacts
+          {{ $t('contactsHead') }}
         </h2>
         <v-col class="text-center" cols="12">
           <v-btn
@@ -79,7 +75,7 @@
             href="https://hh.ru/resume/6a5cea43ff0327c3fd0039ed1f4c694f583857"
             target="_blank"
           >
-            Resume
+            {{ $t('resume') }}
           </v-btn>
           <v-btn
             color="#24292e"
