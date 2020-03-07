@@ -28,7 +28,7 @@
     <v-btn
       v-if="$i18n.locale !== 'en'"
       right
-      fixed
+      absolute
       class="mt-3"
       outlined
       color="white"
@@ -39,7 +39,7 @@
     <v-btn
       v-if="$i18n.locale !== 'ru'"
       right
-      fixed
+      absolute
       class="mt-3"
       outlined
       color="white"

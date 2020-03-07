@@ -62,38 +62,21 @@ export default {
     [
       'nuxt-i18n',
       {
-        locales: ['en', 'ru'],
+        locales: [
+          {
+            code: 'en',
+            file: 'en-US.js'
+          },
+          {
+            code: 'ru',
+            file: 'ru-RU.js'
+          }
+        ],
+        lazy: true,
+        langDir: 'lang/',
         defaultLocale: 'en',
         vueI18n: {
-          fallbackLocale: 'en',
-          messages: {
-            en: {
-              my_name: 'Anna Serba',
-              subheading: '.Net Programmer and entrepreneur',
-              aboutMeHead: 'About me',
-              aboutMe: `I am a business automation web engineer.
-              The area of my expertise covers the full stack .Net technologies.
-              But I specialize in front-end technologies.
-              I have extensive experience in fixing software bugs.
-              I work only remotely`,
-              basicSkilsHead: 'Basic skils',
-              contactsHead: 'Contacts',
-              resume: 'Resume'
-            },
-            ru: {
-              my_name: 'Анна Серба',
-              subheading: '.Net программист и предприниматель',
-              aboutMeHead: 'Обо мне',
-              aboutMe: `Я веб-инженер автоматизации бизнеса.
-              Область моей компетенции охватывает полный стек технологий .Net.
-              Но я специализируюсь на front-end технологиях.
-              У меня большой опыт исправления ошибок в программном обеспечении.
-              Я работаю только удаленно`,
-              basicSkilsHead: 'Базовые навыки',
-              contactsHead: 'Котакты',
-              resume: 'Резюме'
-            }
-          }
+          fallbackLocale: 'en'
         }
       }
     ]
