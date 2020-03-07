@@ -1,34 +1,31 @@
 <template>
   <v-card
     class="mx-auto mb-5"
-    max-width="400"
-    min-width="400"
+    max-width="300"
+    min-width="300"
   >
     <v-img
       class="white--text align-end"
-      height="200px"
-      src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+      height="150px"
+      :src="feed.urlTileImage"
     >
       <v-card-title>
         {{ feed.title }}
       </v-card-title>
     </v-img>
-
-    <v-card-subtitle class="pb-0">
-      {{ feed.postedOn }}
-    </v-card-subtitle>
-
-    <v-card-text class="text--primary">
-      <div>
-        {{ feed.shortDescription }}
-      </div>
-    </v-card-text>
+    <v-card-text
+      class="text--primary pb-0"
+      v-html="feed.shortDescription"
+    />
     <v-card-actions>
       <v-btn
         color="orange"
-        text
+        nuxt
+        small
+        outlined
+        :to="'/Feed/'+feed.id"
       >
-        Explore
+        {{ $t('moreDetails') }}
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -40,6 +37,19 @@ export default {
       type: Object,
       required: true
     }
+  },
+  methods: {
+    formatDate (date) {
+      if (!date) { return null }
+
+      const [year, month, day] = date.split('T')[0].split('-')
+      return `${month}/${day}/${year}`
+    }
   }
 }
 </script>
+<style scoped>
+.v-application p {
+  margin-bottom: 0;
+}
+</style>

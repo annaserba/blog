@@ -11,7 +11,8 @@ export default (context) => {
       I work only remotely`,
       basicSkilsHead: 'Basic skils',
       contactsHead: 'Contacts',
-      resume: 'Resume'
+      resume: 'Resume',
+      moreDetails: 'More details'
     })
   })
 }
