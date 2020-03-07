@@ -45,7 +45,7 @@ export default {
   },
   mounted () {
     axios
-      .get('Feeds', {
+      .get('api/Feeds', {
       })
       .then((response) => {
         this.feeds = response.data
