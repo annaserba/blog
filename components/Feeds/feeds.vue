@@ -26,7 +26,7 @@
 </template>
 <script>
 import axios from '~/plugins/axios'
-import ShortFeed from '@/components/Feed/_shortFeed'
+import ShortFeed from '@/components/Feeds/_shortFeed'
 export default {
   components: {
     ShortFeed

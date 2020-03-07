@@ -15,15 +15,16 @@
     </v-img>
     <v-card-text
       class="text--primary pb-0"
-      v-html="feed.shortDescription"
-    />
+    >
+      {{ feed.shortDescription }}
+    </v-card-text>
     <v-card-actions>
       <v-btn
         color="orange"
         nuxt
         small
         outlined
-        :to="'/Feed/'+feed.id"
+        :to="'/Feeds/'+feed.id"
       >
         {{ $t('moreDetails') }}
       </v-btn>
