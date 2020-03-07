@@ -11,7 +11,8 @@ export default (context) => {
       Я работаю только удаленно`,
       basicSkilsHead: 'Базовые навыки',
       contactsHead: 'Котакты',
-      resume: 'Резюме'
+      resume: 'Резюме',
+      moreDetails: 'Подробнее'
     })
   })
 }

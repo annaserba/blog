@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="mt-5 mb-5">
     <v-sheet
       v-if="loading"
       :color="`grey  lighten-5`"
     >
       <v-skeleton-loader
         class="mx-auto"
-        max-width="400"
-        min-width="400"
+        max-width="300"
+        min-width="300"
         type="card"
       />
     </v-sheet>
