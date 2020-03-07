@@ -29,11 +29,17 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include=".browserslistrc" />
+    <Content Include=".editorconfig" />
     <Content Include=".eslintrc.js" />
     <Content Include=".gitignore" />
+    <Content Include="components\Feed\feeds.vue" />
+    <Content Include="components\Feed\_feed.vue" />
+    <Content Include="components\Feed\_shortFeed.vue" />
     <Content Include="Dockerfile" />
+    <Content Include="nuxt.config.js" />
     <Content Include="package-lock.json" />
+    <Content Include="pages\Feed\index.vue" />
+    <Content Include="plugins\axios.js" />
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
     <Content Include="src\App.vue" />
@@ -50,11 +56,19 @@
     <Content Include="src\store\index.js" />
     <Content Include="src\views\About.vue" />
     <Content Include="src\views\Home.vue" />
-    <Content Include="server.js" />
-    <Content Include="vue.config.js" />
+    <Content Include="static\sw.js" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="assets\" />
+    <Folder Include="components\" />
+    <Folder Include="components\Feed\" />
     <Folder Include="dist\" />
+    <Folder Include="lang\" />
+    <Folder Include="layouts\" />
+    <Folder Include="middleware\" />
+    <Folder Include="pages\" />
+    <Folder Include="pages\Feed\" />
+    <Folder Include="plugins\" />
     <Folder Include="public\" />
     <Folder Include="src\" />
     <Folder Include="src\assets\" />
@@ -64,9 +78,10 @@
     <Folder Include="src\router\" />
     <Folder Include="src\store\" />
     <Folder Include="src\views\" />
+    <Folder Include="static\" />
+    <Folder Include="store\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="babel.config.js" />
     <Content Include="src\main.js" />
   </ItemGroup>
   <PropertyGroup>
