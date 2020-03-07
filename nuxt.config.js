@@ -33,6 +33,9 @@ export default {
   plugins: [
     '~/plugins/fontawesome.js'
   ],
+  env: {
+    baseUrl: process.env.BASE_URL || 'https://localhost:44354'
+  },
   /*
   ** Nuxt.js dev-modules
   */
