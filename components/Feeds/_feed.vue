@@ -1,12 +1,12 @@
 <template>
   <v-card
-    class="mx-auto mb-5"
-    max-width="300"
-    min-width="300"
+    class="mx-auto mb-5 mt-5"
+    max-width="1000"
+    min-width="1000"
   >
     <v-img
       class="white--text align-end"
-      height="150px"
+      height="100"
       :src="feed.urlTileImage"
     >
       <v-card-title>
@@ -15,19 +15,8 @@
     </v-img>
     <v-card-text
       class="text--primary pb-0"
-      v-html="feed.shortDescription"
+      v-html="feed.description"
     />
-    <v-card-actions>
-      <v-btn
-        color="orange"
-        nuxt
-        small
-        outlined
-        :to="'/Feed/'+feed.id"
-      >
-        {{ $t('moreDetails') }}
-      </v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 <script>
