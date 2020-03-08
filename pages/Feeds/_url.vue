@@ -1,24 +1,29 @@
 <template>
-  <Feed :feed="feed" />
+  <div>
+    <Menu />
+    <Feed :feed="feed" />
+  </div>
 </template>
 <script>
+import Menu from '@/components/menu'
 import axios from '~/plugins/axios'
 import Feed from '@/components/Feeds/_feed'
 export default {
   components: {
-    Feed
+    Feed,
+    Menu
   },
   data () {
     return {
       feed: {},
-      id: this.$route.params.id,
+      url: this.$route.params.url,
       loading: true,
       errored: false
     }
   },
   mounted () {
     axios
-      .get('api/Feeds/' + this.id, {
+      .get('api/Feeds/' + this.url, {
       })
       .then((response) => {
         this.feed = response.data

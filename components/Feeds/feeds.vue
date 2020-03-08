@@ -17,6 +17,7 @@
         :key="feed.ID"
         :feed="feed"
         :index="index"
+        :lang="lang"
       />
     </div>
     <div v-else>
@@ -28,6 +29,9 @@
 import axios from '~/plugins/axios'
 import ShortFeed from '@/components/Feeds/_shortFeed'
 export default {
+  props: {
+    lang: String
+  },
   components: {
     ShortFeed
   },
@@ -45,7 +49,7 @@ export default {
   },
   mounted () {
     axios
-      .get('api/Feeds', {
+      .get('api/Feeds?lang=' + this.lang, {
       })
       .then((response) => {
         this.feeds = response.data

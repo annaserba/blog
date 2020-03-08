@@ -24,7 +24,7 @@
         nuxt
         small
         outlined
-        :to="'/Feeds/'+feed.id"
+        :to="'Feeds/' + feed.url"
       >
         {{ $t('moreDetails') }}
       </v-btn>
@@ -34,6 +34,7 @@
 <script>
 export default {
   props: {
+    lang: String,
     feed: {
       type: Object,
       required: true
