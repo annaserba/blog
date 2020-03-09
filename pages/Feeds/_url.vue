@@ -23,7 +23,7 @@ export default {
   },
   mounted () {
     axios
-      .get('api/Feeds/' + this.url, {
+      .get('api/Feeds/' + this.url + '?lang=' + this.$i18n.locale, {
       })
       .then((response) => {
         this.feed = response.data
