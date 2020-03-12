@@ -16,7 +16,7 @@
     <v-card-text
       class="text--primary pb-0"
     >
-      {{ feed.shortDescription }}
+      {{ feed.excerpt }}
     </v-card-text>
     <v-card-actions>
       <v-btn
