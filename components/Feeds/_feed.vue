@@ -15,7 +15,7 @@
     </v-img>
     <v-card-text
       class="text--primary"
-      v-html="feed.description"
+      v-html="feed.content"
     />
   </v-card>
 </template>

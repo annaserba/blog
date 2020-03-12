@@ -49,7 +49,7 @@ export default {
   },
   mounted () {
     axios
-      .get('api/Feeds?lang=' + this.lang, {
+      .get('Feeds?lang=' + this.lang, {
       })
       .then((response) => {
         this.feeds = response.data
