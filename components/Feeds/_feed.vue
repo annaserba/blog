@@ -20,8 +20,16 @@
     </v-card-title>
     <v-card-text
       class="text--primary text-left"
-      v-html="feed.content"
-    />
+    >
+      <div v-html="feed.content" />
+      <a
+        v-if="feed.source"
+        class="text-left"
+        :href="feed.source"
+      >
+        {{ $t('source') }}
+      </a>
+    </v-card-text>
     <div
       v-if="feed.commentStatus"
       class="pl-4 pr-4 pb-5 pt-2"

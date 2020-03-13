@@ -12,7 +12,8 @@ export default (context) => {
       basicSkilsHead: 'Basic skils',
       contactsHead: 'Contacts',
       resume: 'Resume',
-      moreDetails: 'More details'
+      moreDetails: 'More details',
+      source: 'Source'
     })
   })
 }
