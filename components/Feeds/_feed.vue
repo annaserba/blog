@@ -5,7 +5,7 @@
     min-width="1000"
   >
     <v-img
-      v-if="feed.urlTileImage.length"
+      v-if="feed.urlTileImage"
       class="white--text align-end"
       height="100"
       :src="feed.urlTileImage"
