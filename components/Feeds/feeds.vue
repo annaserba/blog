@@ -1,16 +1,12 @@
 <template>
   <div class="mt-5 mb-5">
-    <v-sheet
+    <v-skeleton-loader
       v-if="loading"
-      :color="`grey  lighten-5`"
-    >
-      <v-skeleton-loader
-        class="mx-auto"
-        max-width="300"
-        min-width="300"
-        type="card"
-      />
-    </v-sheet>
+      class="mx-auto"
+      max-width="300"
+      min-width="300"
+      type="card"
+    />
     <div v-else-if="feeds.length">
       <ShortFeed
         v-for="(feed, index) in feeds"
@@ -20,9 +16,17 @@
         :lang="lang"
       />
     </div>
-    <div v-else>
-      No feeds
-    </div>
+    <v-row
+      v-else-if="!loading"
+      align="center">
+      <v-col align="center">
+        <h1
+          class="display-2 primary--text"
+        >
+          No Feeds
+        </h1>
+      </v-col>
+    </v-row>
   </div>
 </template>
 <script>

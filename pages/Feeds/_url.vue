@@ -1,7 +1,35 @@
 <template>
   <div>
     <Menu />
-    <Feed :feed="feed" />
+    <v-container
+      class="text-center"
+      fill-height
+      max-width="1000"
+      min-width="1000"
+    >
+      <v-skeleton-loader
+        v-if="loading"
+        class="mx-auto"
+        type="card"
+        width="100%"
+      />
+      <Feed
+        v-else-if="feed"
+        :feed="feed"
+      />
+      <v-row
+        v-else-if="!loading"
+        align="center"
+      >
+        <v-col align="center">
+          <h1
+            class="display-2 primary--text"
+          >
+            No Feed
+          </h1>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 <script>
@@ -15,7 +43,7 @@ export default {
   },
   data () {
     return {
-      feed: {},
+      feed: null,
       url: this.$route.params.url,
       loading: true,
       errored: false

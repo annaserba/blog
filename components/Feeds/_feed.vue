@@ -1,8 +1,7 @@
 <template>
   <v-card
     class="mx-auto mb-5 mt-5"
-    max-width="1000"
-    min-width="1000"
+    width="100%"
   >
     <v-img
       v-if="feed.urlTileImage"
@@ -20,9 +19,24 @@
       {{ feed.title }}
     </v-card-title>
     <v-card-text
-      class="text--primary"
+      class="text--primary text-left"
       v-html="feed.content"
     />
+    <div
+      v-if="feed.commentStatus"
+      class="pl-4 pr-4 pb-5 pt-2"
+      id="anycomment-app"
+    />
+    <script v-if="feed.commentStatus">
+      AnyComment = window.AnyComment || []; AnyComment.Comments = [];
+      AnyComment.Comments.push({
+      "root": "anycomment-app",
+      "app_id": 742,
+      "track_get_params": true,
+      "language": "ru"
+      })
+    </script>
+    <script v-if="feed.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
   </v-card>
 </template>
 <script>

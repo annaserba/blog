@@ -13,7 +13,10 @@
           >
             {{ pageNotFound }}
           </h1>
-          <h1 v-else>
+          <h1
+            v-else
+            class="display-2 primary--text"
+          >
             {{ otherError }}
           </h1>
 
