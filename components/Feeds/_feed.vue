@@ -23,10 +23,11 @@
       v-html="feed.content"
     />
     <div
+      v-if="feed.commentStatus"
       class="pl-4 pr-4 pb-5 pt-2"
       id="anycomment-app"
     />
-    <script>
+    <script v-if="feed.commentStatus">
       AnyComment = window.AnyComment || []; AnyComment.Comments = [];
       AnyComment.Comments.push({
       "root": "anycomment-app",
@@ -35,7 +36,7 @@
       "language": "ru"
       })
     </script>
-    <script type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
+    <script v-if="feed.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
   </v-card>
 </template>
 <script>
