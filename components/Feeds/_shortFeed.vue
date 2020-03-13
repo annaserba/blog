@@ -1,8 +1,7 @@
 <template>
   <v-card
     class="mx-auto mb-5"
-    max-width="300"
-    min-width="300"
+    width="100%"
   >
     <v-img
       v-if="feed.urlTileImage"

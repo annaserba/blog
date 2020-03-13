@@ -1,25 +1,30 @@
 <template>
-  <div class="mt-5 mb-5">
-    <v-skeleton-loader
-      v-if="loading"
-      class="mx-auto"
-      max-width="300"
-      min-width="300"
-      type="card"
-    />
-    <div v-else-if="feeds.length">
-      <ShortFeed
+  <div class="mt-5 mb-5 pl-5 pr-5">
+    <v-row
+      align="center"
+    >
+      <v-skeleton-loader
+        v-if="loading"
+        class="mx-auto"
+        max-width="300"
+        min-width="300"
+        type="card"
+      />
+      <v-col
+        v-else-if="feeds.length"
         v-for="(feed, index) in feeds"
         :key="feed.ID"
-        :feed="feed"
         :index="index"
-        :lang="lang"
-      />
-    </div>
-    <v-row
-      v-else-if="!loading"
-      align="center">
-      <v-col align="center">
+        cols="12"
+        md="3"
+        sm="6"
+      >
+        <ShortFeed
+          :feed="feed"
+          :lang="lang"
+        />
+      </v-col>
+      <v-col v-else-if="!loading" align="center">
         <h1
           class="display-2 primary--text"
         >

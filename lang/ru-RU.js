@@ -13,7 +13,8 @@ export default (context) => {
       contactsHead: 'Котакты',
       resume: 'Резюме',
       moreDetails: 'Подробнее',
-      source: 'Источник'
+      source: 'Источник',
+      blog: 'Блог'
     })
   })
 }

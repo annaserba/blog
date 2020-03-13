@@ -13,7 +13,8 @@ export default (context) => {
       contactsHead: 'Contacts',
       resume: 'Resume',
       moreDetails: 'More details',
-      source: 'Source'
+      source: 'Source',
+      blog: 'Blog'
     })
   })
 }
