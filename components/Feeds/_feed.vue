@@ -19,10 +19,13 @@
       {{ feed.title }}
     </v-card-title>
     <v-card-text
-      class="text--primary"
+      class="text--primary text-left"
       v-html="feed.content"
     />
-    <div class="pl-5 pr-5 pb-5 pt-5" id="anycomment-app" />
+    <div
+      class="pl-4 pr-4 pb-5 pt-2"
+      id="anycomment-app"
+    />
     <script>
       AnyComment = window.AnyComment || []; AnyComment.Comments = [];
       AnyComment.Comments.push({
