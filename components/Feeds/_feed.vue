@@ -5,6 +5,7 @@
     min-width="1000"
   >
     <v-img
+      v-if="feed.urlTileImage.length"
       class="white--text align-end"
       height="100"
       :src="feed.urlTileImage"
@@ -13,6 +14,11 @@
         {{ feed.title }}
       </v-card-title>
     </v-img>
+    <v-card-title
+      v-else
+    >
+      {{ feed.title }}
+    </v-card-title>
     <v-card-text
       class="text--primary"
       v-html="feed.content"
