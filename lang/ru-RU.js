@@ -12,7 +12,9 @@ export default (context) => {
       basicSkilsHead: 'Базовые навыки',
       contactsHead: 'Котакты',
       resume: 'Резюме',
-      moreDetails: 'Подробнее'
+      moreDetails: 'Подробнее',
+      source: 'Источник',
+      blog: 'Блог'
     })
   })
 }

@@ -47,6 +47,17 @@
     >
       RU
     </v-btn>
+    <v-btn
+      right
+      absolute
+      class="mt-3"
+      outlined
+      color="white"
+      :to="'/Feeds'"
+      style="margin-right:90px"
+    >
+      {{ $t('blog') }}
+    </v-btn>
     <!-- <v-navigation-drawer
       v-model="rightDrawer"
       :right="right"
