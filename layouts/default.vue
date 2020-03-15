@@ -48,6 +48,7 @@
       RU
     </v-btn>
     <v-btn
+      v-if="$i18n.locale == 'ru'"
       right
       absolute
       class="mt-3"
