@@ -20,7 +20,7 @@
         sm="6"
       >
         <ShortFeed
-          :feed="feed.feed"
+          :model="feed"
           :lang="lang"
         />
       </v-col>
