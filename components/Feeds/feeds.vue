@@ -13,14 +13,14 @@
       <v-col
         v-else-if="feeds.length"
         v-for="(feed, index) in feeds"
-        :key="feed.ID"
+        :key="feed.feed.ID"
         :index="index"
         cols="12"
         md="3"
         sm="6"
       >
         <ShortFeed
-          :feed="feed"
+          :feed="feed.feed"
           :lang="lang"
         />
       </v-col>
