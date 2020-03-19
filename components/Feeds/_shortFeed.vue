@@ -4,32 +4,44 @@
     width="100%"
   >
     <v-img
-      v-if="feed.urlTileImage"
+      v-if="model.feed.urlTileImage"
       class="white--text align-end"
       height="150px"
-      :src="feed.urlTileImage"
+      :src="model.feed.urlTileImage"
     >
       <v-card-title>
-        {{ feed.title }}
+        {{ model.feed.title }}
       </v-card-title>
     </v-img>
     <v-card-title
       v-else
     >
-      {{ feed.title }}
+      {{ model.feed.title }}
     </v-card-title>
     <v-card-text
       class="text--primary pb-0"
     >
-      {{ feed.excerpt }}
+      {{ model.feed.excerpt }}
     </v-card-text>
+    <v-chip-group
+      class="pl-2 pr-2"
+      column
+      active-class="primary--text"
+    >
+      <v-chip
+        v-for="tag in model.tags"
+        :key="tag"
+      >
+        {{ tag }}
+      </v-chip>
+    </v-chip-group>
     <v-card-actions>
       <v-btn
         color="orange"
         nuxt
         small
         outlined
-        :to="'Feeds/' + feed.url"
+        :to="'Feeds/' + model.feed.url"
       >
         {{ $t('moreDetails') }}
       </v-btn>
@@ -40,7 +52,7 @@
 export default {
   props: {
     lang: String,
-    feed: {
+    model: {
       type: Object,
       required: true
     }
