@@ -30,6 +30,12 @@ export default {
         to: '/Feeds'
       }
     ]
-  })
+  }),
+  head () {
+    return {
+      titleTemplate: '%s - Anna Serba',
+      title: 'Blog'
+    }
+  }
 }
 </script>

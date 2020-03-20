@@ -113,6 +113,12 @@ export default {
         this.errored = true
       })
       .finally(() => (this.loading = false))
+  },
+  head () {
+    return {
+      titleTemplate: '%s - Anna Serba',
+      title: this.$route.params.url
+    }
   }
 }
 </script>
