@@ -28,7 +28,7 @@
         <h1
           class="display-2 primary--text"
         >
-          No Feeds
+          {{ $t('noFeed') }}
         </h1>
       </v-col>
     </v-row>

@@ -27,7 +27,7 @@
           small
           :to="'/Feeds'"
         >
-          Назад
+          {{ $t('back') }}
         </v-btn>
         <v-breadcrumbs :items="breadcrumbs">
           <template v-slot:divider>
@@ -61,7 +61,7 @@
           <h1
             class="display-2 primary--text"
           >
-            No Feed
+            {{ $t('noFeed') }}
           </h1>
         </v-col>
       </v-row>
