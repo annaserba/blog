@@ -2,17 +2,11 @@
   <div>
     <v-img
       v-if="feed.urlTileImage"
-      class="white--text align-end"
-      height="100"
+      class="white--text align-end float-right mr-5 mb-5"
+      max-width="400px"
       :src="feed.urlTileImage"
-    >
-      <v-card-title>
-        {{ feed.title }}
-      </v-card-title>
-    </v-img>
-    <v-card-title
-      v-else
-    >
+    />
+    <v-card-title>
       {{ feed.title }}
     </v-card-title>
     <v-card-text
