@@ -14,7 +14,9 @@ export default (context) => {
       resume: 'Resume',
       moreDetails: 'More details',
       source: 'Source',
-      blog: 'Blog'
+      blog: 'Blog',
+      back: 'Back',
+      noFeed: 'No feed(s)'
     })
   })
 }

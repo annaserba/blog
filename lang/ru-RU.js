@@ -14,7 +14,9 @@ export default (context) => {
       resume: 'Резюме',
       moreDetails: 'Подробнее',
       source: 'Источник',
-      blog: 'Блог'
+      blog: 'Блог',
+      back: 'Назад',
+      noFeed: 'Нет публикаций'
     })
   })
 }
