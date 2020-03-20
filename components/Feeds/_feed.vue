@@ -1,21 +1,12 @@
 <template>
-  <v-card
-    class="mx-auto mb-5 mt-5"
-    width="100%"
-  >
+  <div>
     <v-img
       v-if="feed.urlTileImage"
-      class="white--text align-end"
-      height="100"
+      class="white--text align-end float-right mr-5 mb-5"
+      max-width="400px"
       :src="feed.urlTileImage"
-    >
-      <v-card-title>
-        {{ feed.title }}
-      </v-card-title>
-    </v-img>
-    <v-card-title
-      v-else
-    >
+    />
+    <v-card-title>
       {{ feed.title }}
     </v-card-title>
     <v-card-text
@@ -26,26 +17,12 @@
         v-if="feed.source"
         class="text-left"
         :href="feed.source"
+        right
       >
         {{ $t('source') }}
       </a>
     </v-card-text>
-    <div
-      v-if="feed.commentStatus"
-      class="pl-4 pr-4 pb-5 pt-2"
-      id="anycomment-app"
-    />
-    <script v-if="feed.commentStatus">
-      AnyComment = window.AnyComment || []; AnyComment.Comments = [];
-      AnyComment.Comments.push({
-      "root": "anycomment-app",
-      "app_id": 742,
-      "track_get_params": true,
-      "language": "ru"
-      })
-    </script>
-    <script v-if="feed.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
-  </v-card>
+  </div>
 </template>
 <script>
 export default {

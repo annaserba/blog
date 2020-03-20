@@ -13,10 +13,46 @@
         type="card"
         width="100%"
       />
-      <Feed
+      <v-card
         v-else-if="feed"
-        :feed="feed"
-      />
+        class="mx-auto mb-5 mt-5"
+        width="80%"
+      >
+        <v-btn
+          class="mt-5 mr-1"
+          color="orange"
+          outlined
+          absolute
+          right
+          small
+          :to="'/Feeds'"
+        >
+          Назад
+        </v-btn>
+        <v-breadcrumbs :items="breadcrumbs">
+          <template v-slot:divider>
+            <v-icon>mdi-chevron-right</v-icon>
+          </template>
+        </v-breadcrumbs>
+        <Feed
+          :feed="feed"
+        />
+        <div
+          v-if="feed.commentStatus"
+          class="pl-4 pr-4 pb-5 pt-2"
+          id="anycomment-app"
+        />
+        <script v-if="feed.commentStatus">
+          AnyComment = window.AnyComment || []; AnyComment.Comments = [];
+          AnyComment.Comments.push({
+          "root": "anycomment-app",
+          "app_id": 742,
+          "track_get_params": true,
+          "language": "ru"
+          })
+        </script>
+        <script v-if="feed.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
+      </v-card>
       <v-row
         v-else-if="!loading"
         align="center"
@@ -46,7 +82,23 @@ export default {
       feed: null,
       url: this.$route.params.url,
       loading: true,
-      errored: false
+      errored: false,
+      breadcrumbs: [
+        {
+          text: 'Profile',
+          disabled: false,
+          to: '/'
+        },
+        {
+          text: 'Blog',
+          disabled: false,
+          href: '/Feeds'
+        },
+        {
+          text: 'Feed',
+          disabled: true
+        }
+      ]
     }
   },
   mounted () {

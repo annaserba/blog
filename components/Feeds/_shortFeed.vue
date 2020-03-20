@@ -2,20 +2,15 @@
   <v-card
     class="mx-auto mb-5"
     width="100%"
+    nuxt
+    :to="'Feeds/' + model.feed.url"
   >
     <v-img
       v-if="model.feed.urlTileImage"
       class="white--text align-end"
-      height="150px"
       :src="model.feed.urlTileImage"
-    >
-      <v-card-title>
-        {{ model.feed.title }}
-      </v-card-title>
-    </v-img>
-    <v-card-title
-      v-else
-    >
+    />
+    <v-card-title>
       {{ model.feed.title }}
     </v-card-title>
     <v-card-text
@@ -35,17 +30,6 @@
         {{ tag }}
       </v-chip>
     </v-chip-group>
-    <v-card-actions>
-      <v-btn
-        color="orange"
-        nuxt
-        small
-        outlined
-        :to="'Feeds/' + model.feed.url"
-      >
-        {{ $t('moreDetails') }}
-      </v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 <script>
