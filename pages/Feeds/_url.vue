@@ -1,6 +1,11 @@
 <template>
   <div>
     <Menu />
+    <v-breadcrumbs :items="breadcrumbs">
+      <template v-slot:divider>
+        <v-icon>mdi-chevron-right</v-icon>
+      </template>
+    </v-breadcrumbs>
     <v-container
       class="text-center"
       fill-height
@@ -46,7 +51,23 @@ export default {
       feed: null,
       url: this.$route.params.url,
       loading: true,
-      errored: false
+      errored: false,
+      breadcrumbs: [
+        {
+          text: 'Profile',
+          disabled: false,
+          to: '/'
+        },
+        {
+          text: 'Blog',
+          disabled: false,
+          href: '/Feeds'
+        },
+        {
+          text: 'Feed',
+          disabled: true
+        }
+      ]
     }
   },
   mounted () {
