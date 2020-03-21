@@ -1,33 +1,33 @@
 <template>
   <div>
     <v-img
-      v-if="feed.urlTileImage"
+      v-if="model.feed.urlTileImage"
       class="white--text align-end float-right mr-5 mb-5"
       max-width="400px"
-      :src="feed.urlTileImage"
+      :src="model.feed.urlTileImage"
     />
     <v-card-title>
-      {{ feed.title }}
+      {{ model.feed.title }}
     </v-card-title>
     <v-card-text
       class="text--primary text-left"
     >
-      <div v-html="feed.content" />
-      <a
-        v-if="feed.source"
+      <div v-html="model.feed.content" />
+      <!-- <a
+        v-if="model.feed.source"
         class="text-left"
-        :href="feed.source"
+        :href="model.feed.source"
         right
       >
         {{ $t('source') }}
-      </a>
+      </a> -->
     </v-card-text>
   </div>
 </template>
 <script>
 export default {
   props: {
-    feed: {
+    model: {
       type: Object,
       required: true
     }
@@ -43,7 +43,7 @@ export default {
   head () {
     return {
       titleTemplate: '%s - Anna Serba',
-      title: this.feed.title
+      title: this.model.feed.title
     }
   }
 }
