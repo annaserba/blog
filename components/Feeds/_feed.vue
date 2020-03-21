@@ -13,14 +13,15 @@
       class="text--primary text-left"
     >
       <div v-html="model.feed.content" />
-      <!-- <a
-        v-if="model.feed.source"
+      <a
+        v-for="(name,url) in model.sources"
+        :key="url"
         class="text-left"
-        :href="model.feed.source"
+        :href="url"
         right
       >
-        {{ $t('source') }}
-      </a> -->
+        {{ name }}
+      </a>
     </v-card-text>
   </div>
 </template>
