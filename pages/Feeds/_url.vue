@@ -14,7 +14,7 @@
         width="100%"
       />
       <v-card
-        v-else-if="feed"
+        v-else-if="model"
         class="mx-auto mb-5 mt-5"
         width="80%"
       >
@@ -35,14 +35,14 @@
           </template>
         </v-breadcrumbs>
         <Feed
-          :feed="feed"
+          :model="model"
         />
         <div
-          v-if="feed.commentStatus"
+          v-if="model.feed.commentStatus"
           class="pl-4 pr-4 pb-5 pt-2"
           id="anycomment-app"
         />
-        <script v-if="feed.commentStatus">
+        <script v-if="model.feed.commentStatus">
           AnyComment = window.AnyComment || []; AnyComment.Comments = [];
           AnyComment.Comments.push({
           "root": "anycomment-app",
@@ -51,7 +51,7 @@
           "language": "ru"
           })
         </script>
-        <script v-if="feed.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
+        <script v-if="model.feed.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
       </v-card>
       <v-row
         v-else-if="!loading"
@@ -79,7 +79,7 @@ export default {
   },
   data () {
     return {
-      feed: null,
+      model: null,
       url: this.$route.params.url,
       loading: true,
       errored: false,
@@ -106,7 +106,7 @@ export default {
       .get('Feeds/' + this.url + '?lang=' + this.$i18n.locale, {
       })
       .then((response) => {
-        this.feed = response.data
+        this.model = response.data
       })
       // eslint-disable-next-line handle-callback-err
       .catch((error) => {
