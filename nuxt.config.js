@@ -121,5 +121,15 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  pwa: {
+    manifest: {
+      lang: 'ru',
+      name: 'Anna Serba - programmer',
+      short_name: 'Anna Serba'
+    },
+    workbox: {
+      dev: true // or use a global variable to track the current NODE_ENV, etc to determine dev mode
+    }
   }
 }
