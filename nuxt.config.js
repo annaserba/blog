@@ -125,7 +125,7 @@ export default {
   pwa: {
     manifest: {
       lang: 'ru',
-      name: 'Anna Serba - programmer',
+      name: 'Anna Serba - Programmer',
       short_name: 'Anna Serba',
       display: 'standalone',
       theme_color: '#F11010'
