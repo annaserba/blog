@@ -35,7 +35,8 @@ export default {
     '~/plugins/fontawesome.js'
   ],
   env: {
-    baseUrl: process.env.BASE_URL || 'https://localhost:44354'
+    baseUrl: process.env.BASE_URL || 'https://localhost:44354',
+    thisUrl: process.env.THISURL || '.'
   },
   /*
   ** Nuxt.js dev-modules
@@ -129,7 +130,7 @@ export default {
       short_name: 'Anna Serba',
       display: 'standalone',
       background_color: '#fff',
-      start_url: '.'
+      start_url: process.env.thisUrl
     }
   }
 }
