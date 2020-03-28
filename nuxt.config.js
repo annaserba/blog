@@ -128,7 +128,8 @@ export default {
       name: 'Anna Serba - Programmer',
       short_name: 'Anna Serba',
       display: 'standalone',
-      theme_color: '#F11010'
+      background_color: '#fff',
+      start_url: '.'
     }
   }
 }
