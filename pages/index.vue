@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="header">
+      <MenuItems />
+    </div>
     <v-parallax dark src="./img/back.png">
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
@@ -13,7 +16,7 @@
       </v-row>
     </v-parallax>
     <v-container
-      class=" dark color-bl mb-10 container"
+      class=" dark color-bl mb-10 container relative"
     >
       <v-row
         align="center"
@@ -124,14 +127,19 @@
     </v-container>
   </div>
 </template>
-<style scoped>
-.container{
-  position: relative;
+<style scope>
+.header{
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  padding: 4px 16px;
 }
 </style>
 <script>
+import MenuItems from '@/components/Menu/menuItems'
 export default {
   components: {
+    MenuItems
   },
   data () {
     return {

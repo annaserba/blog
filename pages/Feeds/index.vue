@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-import Menu from '@/components/menu'
+import Menu from '@/components/Menu/menu'
 import Feeds from '@/components/Feeds/feeds'
 export default {
   components: {
@@ -27,7 +27,7 @@ export default {
       {
         text: 'Blog',
         disabled: false,
-        to: '/Feeds'
+        to: '/feeds'
       }
     ]
   }),
