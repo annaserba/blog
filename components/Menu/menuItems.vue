@@ -22,7 +22,7 @@
         {{ $t('blog') }}
       </v-btn>
       <v-btn
-        v-if="$i18n.locale !== 'en'"
+        v-if="$i18n.locale !== 'en'&&this.$route.path==='/'"
         outlined
         color="white"
         :to="switchLocalePath('en')"
