@@ -10,13 +10,14 @@ export default (context) => {
       У меня большой опыт исправления ошибок в программном обеспечении.
       Я работаю только удаленно`,
       basicSkilsHead: 'Базовые навыки',
-      contactsHead: 'Котакты',
+      contactsHead: 'Контакты',
       resume: 'Резюме',
       moreDetails: 'Подробнее',
       source: 'Источник',
       blog: 'Блог',
       back: 'Назад',
-      noFeed: 'Нет публикаций'
+      noFeed: 'Нет публикаций',
+      services: 'Услуги'
     })
   })
 }
