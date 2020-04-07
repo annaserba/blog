@@ -32,8 +32,17 @@
             {{ $t('basicSkilsHead') }}
           </h2>
           <v-chip
+            class="ma-2 "
+            color="primary"
+            outlined
+            label
+          >
+            C#
+          </v-chip>
+          <v-chip
             class="ma-2"
             color="primary"
+            outlined
             label
           >
             HTML
@@ -41,6 +50,7 @@
           <v-chip
             class="ma-2"
             color="primary"
+            outlined
             label
           >
             CSS
@@ -48,6 +58,7 @@
           <v-chip
             class="ma-2"
             color="primary"
+            outlined
             label
           >
             JavaScript
@@ -55,9 +66,10 @@
           <v-chip
             class="ma-2 "
             color="primary"
+            outlined
             label
           >
-            C#
+            Vue.js
           </v-chip>
         </v-col>
       </v-row>
