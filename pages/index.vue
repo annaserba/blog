@@ -82,17 +82,28 @@
         </h2>
         <v-col class="text-center" cols="12">
           <v-btn
+            v-if="$i18n.locale === 'en'"
             color="primary"
-            small
+            tile
             href="https://hh.ru/resume/6a5cea43ff0327c3fd0039ed1f4c694f583857"
             target="_blank"
           >
             {{ $t('resume') }}
           </v-btn>
           <v-btn
+            v-if="$i18n.locale === 'ru'"
+            color="primary"
+            tile
+            href="https://hh.ru/resume/7af89ac0ff074b181a0039ed1f74687968354e"
+            target="_blank"
+          >
+            {{ $t('resume') }}
+          </v-btn>
+          <v-btn
+            class="ml-3"
             color="#24292e"
             dark
-            small
+            tile
             href="https://github.com/annaserba"
             target="_blank"
           >
