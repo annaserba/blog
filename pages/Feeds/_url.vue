@@ -25,7 +25,7 @@
           absolute
           right
           small
-          :to="'/Feeds'"
+          :to="'/feeds'"
         >
           {{ $t('back') }}
         </v-btn>
@@ -69,7 +69,7 @@
   </div>
 </template>
 <script>
-import Menu from '@/components/menu'
+import Menu from '@/components/Menu/menu'
 import axios from '~/plugins/axios'
 import Feed from '@/components/Feeds/_feed'
 export default {
@@ -92,7 +92,7 @@ export default {
         {
           text: 'Blog',
           disabled: false,
-          href: '/Feeds'
+          href: '/feeds'
         },
         {
           text: 'Feed',

@@ -35,7 +35,6 @@
 <script>
 export default {
   props: {
-    lang: String,
     model: {
       type: Object,
       required: true
