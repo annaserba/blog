@@ -1,7 +1,7 @@
 <template>
   <v-toolbar
     dark
-    src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+    src="./img/back.png"
   >
     <v-toolbar-title>
       <v-btn
