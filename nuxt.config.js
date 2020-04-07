@@ -128,9 +128,9 @@ export default {
       lang: 'ru',
       name: 'Anna Serba - Programmer',
       short_name: 'Anna Serba',
-      display: 'standalone',
+      start_url: '.',
       background_color: '#fff',
-      start_url: process.env.thisUrl
+      theme_color: '#fff'
     }
   }
 }
