@@ -1,7 +1,7 @@
 <template>
   <v-toolbar
     dark
-    src="./img/back.png"
+    src="/img/back.png"
   >
     <MenuItems />
   </v-toolbar>
