@@ -88,6 +88,7 @@ export default {
     '@nuxtjs/sitemap'
   ],
   sitemap: {
+    hostname: process.env.THISURL || 'https://annaserba.ru'
   },
   /*
   ** Axios module configuration
