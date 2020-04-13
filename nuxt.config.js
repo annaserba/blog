@@ -84,8 +84,11 @@ export default {
           fallbackLocale: 'en'
         }
       }
-    ]
+    ],
+    '@nuxtjs/sitemap'
   ],
+  sitemap: {
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
