@@ -149,7 +149,10 @@ export default {
   head () {
     return {
       titleTemplate: '',
-      title: 'Anna Serba'
+      title: 'Anna Serba',
+      meta: [
+        { hid: 'description', name: 'description', content: (process.env.npm_package_description || '') + '. ' + this.$t('aboutMe') }
+      ]
     }
   }
 }
