@@ -9,9 +9,9 @@
           <h1 class="display-1 font-weight-thin ">
             {{ $t('my_name') }}
           </h1>
-          <h4 class="subheading">
+          <h2 class="subheading">
             {{ $t('subheading') }}
-          </h4>
+          </h2>
         </v-col>
       </v-row>
     </v-parallax>
@@ -23,17 +23,17 @@
         justify="center"
       >
         <v-col class="text-center " cols="12">
-          <h2 class="display-1 font-weight-thin mt-4 mb-4">
+          <h3 class="display-1 font-weight-thin mt-4 mb-4">
             {{ $t('aboutMeHead') }}
-          </h2>
+          </h3>
           <p class="pl-12 pr-12 mb-0">
             {{ $t('aboutMe') }}
           </p>
         </v-col>
         <v-col class="text-center" cols="12">
-          <h2 class="display-1 font-weight-thin mt-4 mb-4">
+          <h3 class="display-1 font-weight-thin mt-4 mb-4">
             {{ $t('basicSkilsHead') }}
-          </h2>
+          </h3>
           <v-chip
             class="ma-2 "
             color="primary"
@@ -80,9 +80,9 @@
         align="center"
         justify="center"
       >
-        <h2 class="display-1 font-weight-thin mt-4 mb-4">
+        <h3 class="display-1 font-weight-thin mt-4 mb-4">
           {{ $t('contactsHead') }}
-        </h2>
+        </h3>
         <v-col class="text-center" cols="12">
           <v-btn
             v-if="$i18n.locale === 'en'"
@@ -151,7 +151,7 @@ export default {
       titleTemplate: '',
       title: 'Anna Serba',
       meta: [
-        { hid: 'description', name: 'description', content: (process.env.npm_package_description || '') + '. ' + this.$t('aboutMe') }
+        { hid: 'description', name: 'description', content: this.$t('aboutMe') }
       ]
     }
   }
