@@ -62,7 +62,8 @@ export default {
     const client = createClient()
     client.getEntries({
       content_type: process.env.CTF_BLOG_POST_TYPE_ID,
-      order: '-sys.createdAt'
+      order: '-sys.createdAt',
+      select: 'sys.id,fields.slug,fields.title,fields.description,fields.tags,fields.heroImage'
     })
       .then((entries) => {
         this.feeds = entries.items
