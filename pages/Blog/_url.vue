@@ -39,8 +39,8 @@
         />
         <div
           v-if="model.fields.commentStatus"
-          class="pl-4 pr-4 pb-5 pt-2"
           id="anycomment-app"
+          class="pl-4 pr-4 pb-5 pt-2"
         />
         <script v-if="model.fields.commentStatus">
           AnyComment = window.AnyComment || []; AnyComment.Comments = [];
@@ -72,7 +72,7 @@
 import Menu from '@/components/Menu/menu'
 import Feed from '@/components/Feeds/_feed'
 import { createClient } from '~/plugins/contentful.js'
-const client = createClient()
+
 export default {
   components: {
     Feed,
@@ -103,6 +103,7 @@ export default {
     }
   },
   mounted () {
+    const client = createClient()
     client.getEntries({
       content_type: process.env.CTF_BLOG_POST_TYPE_ID,
       'fields.slug': this.$route.params.url

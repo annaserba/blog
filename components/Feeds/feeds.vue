@@ -11,8 +11,8 @@
         type="card"
       />
       <v-col
-        v-else-if="feeds.length"
         v-for="(feed, index) in feeds"
+        v-else-if="feeds.length"
         :key="feed.fields.slug"
         :index="index"
         cols="12"
@@ -37,18 +37,19 @@
 <script>
 import ShortFeed from '@/components/Feeds/_shortFeed'
 import { createClient } from '~/plugins/contentful.js'
-const client = createClient()
+
 export default {
-  props: {
-    lang: String
-  },
-  components: {
-    ShortFeed
-  },
   filters: {
     currencydecimal (value) {
       return value.toFixed(2)
     }
+  },
+  components: {
+    ShortFeed
+  },
+  props: {
+    // eslint-disable-next-line vue/require-default-prop
+    lang: String
   },
   data () {
     return {
@@ -58,6 +59,7 @@ export default {
     }
   },
   mounted () {
+    const client = createClient()
     client.getEntries({
       content_type: process.env.CTF_BLOG_POST_TYPE_ID,
       order: '-sys.createdAt'

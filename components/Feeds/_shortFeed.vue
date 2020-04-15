@@ -3,12 +3,12 @@
     class="mx-auto mb-5"
     width="100%"
     nuxt
-    :to="'Blog/' + model.fields.slug"
+    :to="'blog/' + model.fields.slug"
   >
     <v-img
-      v-if="model.fields.heroImage"
+      v-if="image"
       class="white--text align-end"
-      :src="model.fields.heroImage"
+      :src="image"
     />
     <v-card-title>
       {{ model.fields.title }}
@@ -33,11 +33,28 @@
   </v-card>
 </template>
 <script>
+import { createClient } from '~/plugins/contentful.js'
 export default {
   props: {
     model: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      image: '',
+      loading: true
+    }
+  },
+  mounted () {
+    if (this.model.fields.heroImage) {
+      const client = createClient()
+      client.getAsset(this.model.fields.heroImage.sys.id)
+        .then((asset) => { this.image = asset.fields.file.url })
+        .finally(() => (this.loading = false))
+    } else {
+      this.loading = false
     }
   },
   methods: {

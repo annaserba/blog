@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-img
-      v-if="model.fields.heroImage"
+      v-if="image"
       class="white--text align-end float-right mr-5 mb-5"
       max-width="400px"
-      :src="model.fields.heroImage"
+      :src="image"
     />
     <v-card-title>
       {{ model.fields.title }}
@@ -30,6 +30,7 @@
 </template>
 <script>
 import VueMarkdown from 'vue-markdown'
+import { createClient } from '~/plugins/contentful.js'
 export default {
   components: {
     VueMarkdown
@@ -38,6 +39,22 @@ export default {
     model: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      image: '',
+      loading: true
+    }
+  },
+  mounted () {
+    if (this.model.fields.heroImage) {
+      const client = createClient()
+      client.getAsset(this.model.fields.heroImage.sys.id)
+        .then((asset) => { this.image = asset.fields.file.url })
+        .finally(() => (this.loading = false))
+    } else {
+      this.loading = false
     }
   },
   methods: {
