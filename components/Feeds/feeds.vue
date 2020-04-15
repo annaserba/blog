@@ -13,7 +13,7 @@
       <v-col
         v-else-if="feeds.length"
         v-for="(feed, index) in feeds"
-        :key="feed.feed.ID"
+        :key="feed.fields.slug"
         :index="index"
         cols="12"
         md="3"
@@ -35,8 +35,9 @@
   </div>
 </template>
 <script>
-import axios from '~/plugins/axios'
 import ShortFeed from '@/components/Feeds/_shortFeed'
+import { createClient } from '~/plugins/contentful.js'
+const client = createClient()
 export default {
   props: {
     lang: String
@@ -57,11 +58,12 @@ export default {
     }
   },
   mounted () {
-    axios
-      .get('Feeds?lang=' + this.lang, {
-      })
-      .then((response) => {
-        this.feeds = response.data
+    client.getEntries({
+      content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+      order: '-sys.createdAt'
+    })
+      .then((entries) => {
+        this.feeds = entries.items
       })
       // eslint-disable-next-line handle-callback-err
       .catch((error) => {

@@ -36,7 +36,11 @@ export default {
   ],
   env: {
     baseUrl: process.env.BASE_URL || 'https://localhost:44354',
-    thisUrl: process.env.THISURL || '.'
+    thisUrl: process.env.THISURL || '.',
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID || '',
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN || '',
+    CTF_PERSON_ID: process.env.CTF_PERSON_ID || '',
+    CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID || ''
   },
   /*
   ** Nuxt.js dev-modules

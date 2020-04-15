@@ -3,20 +3,20 @@
     class="mx-auto mb-5"
     width="100%"
     nuxt
-    :to="'Feeds/' + model.feed.url"
+    :to="'Blog/' + model.fields.slug"
   >
     <v-img
-      v-if="model.feed.urlTileImage"
+      v-if="model.fields.heroImage"
       class="white--text align-end"
-      :src="model.feed.urlTileImage"
+      :src="model.fields.heroImage"
     />
     <v-card-title>
-      {{ model.feed.title }}
+      {{ model.fields.title }}
     </v-card-title>
     <v-card-text
       class="text--primary pb-0"
     >
-      {{ model.feed.excerpt }}
+      {{ model.fields.description }}
     </v-card-text>
     <v-chip-group
       class="pl-2 pr-2"
@@ -24,7 +24,7 @@
       active-class="primary--text"
     >
       <v-chip
-        v-for="tag in model.tags"
+        v-for="tag in model.fields.tags"
         :key="tag"
       >
         {{ tag }}

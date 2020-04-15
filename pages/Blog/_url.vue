@@ -25,7 +25,7 @@
           absolute
           right
           small
-          :to="'/feeds'"
+          :to="'/blog'"
         >
           {{ $t('back') }}
         </v-btn>
@@ -38,11 +38,11 @@
           :model="model"
         />
         <div
-          v-if="model.feed.commentStatus"
+          v-if="model.fields.commentStatus"
           class="pl-4 pr-4 pb-5 pt-2"
           id="anycomment-app"
         />
-        <script v-if="model.feed.commentStatus">
+        <script v-if="model.fields.commentStatus">
           AnyComment = window.AnyComment || []; AnyComment.Comments = [];
           AnyComment.Comments.push({
           "root": "anycomment-app",
@@ -51,7 +51,7 @@
           "language": "ru"
           })
         </script>
-        <script v-if="model.feed.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
+        <script v-if="model.fields.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
       </v-card>
       <v-row
         v-else-if="!loading"
@@ -70,8 +70,9 @@
 </template>
 <script>
 import Menu from '@/components/Menu/menu'
-import axios from '~/plugins/axios'
 import Feed from '@/components/Feeds/_feed'
+import { createClient } from '~/plugins/contentful.js'
+const client = createClient()
 export default {
   components: {
     Feed,
@@ -92,7 +93,7 @@ export default {
         {
           text: 'Blog',
           disabled: false,
-          href: '/feeds'
+          href: '/blog'
         },
         {
           text: 'Feed',
@@ -102,11 +103,12 @@ export default {
     }
   },
   mounted () {
-    axios
-      .get('Feeds/' + this.url + '?lang=' + this.$i18n.locale, {
-      })
-      .then((response) => {
-        this.model = response.data
+    client.getEntries({
+      content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+      'fields.slug': this.$route.params.url
+    })
+      .then((entries) => {
+        this.model = entries.items[0]
       })
       // eslint-disable-next-line handle-callback-err
       .catch((error) => {

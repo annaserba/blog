@@ -1,18 +1,18 @@
 <template>
   <div>
     <v-img
-      v-if="model.feed.urlTileImage"
+      v-if="model.fields.heroImage"
       class="white--text align-end float-right mr-5 mb-5"
       max-width="400px"
-      :src="model.feed.urlTileImage"
+      :src="model.fields.heroImage"
     />
     <v-card-title>
-      {{ model.feed.title }}
+      {{ model.fields.title }}
     </v-card-title>
     <v-card-text
       class="text--primary text-left"
     >
-      <div v-html="model.feed.content" />
+      <vue-markdown>{{ model.fields.body }}</vue-markdown>
       <div
         v-for="(name,url) in model.sources"
         :key="url"
@@ -29,7 +29,11 @@
   </div>
 </template>
 <script>
+import VueMarkdown from 'vue-markdown'
 export default {
+  components: {
+    VueMarkdown
+  },
   props: {
     model: {
       type: Object,
@@ -47,7 +51,7 @@ export default {
   head () {
     return {
       titleTemplate: '%s - Anna Serba',
-      title: this.model.feed.title
+      title: this.model.fields.title
     }
   }
 }
