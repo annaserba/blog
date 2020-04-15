@@ -12,7 +12,7 @@
     <v-card-text
       class="text--primary text-left"
     >
-      <div v-html="model.fields.body" />
+      <vue-markdown>{{ model.fields.body }}</vue-markdown>
       <div
         v-for="(name,url) in model.sources"
         :key="url"
@@ -29,7 +29,11 @@
   </div>
 </template>
 <script>
+import VueMarkdown from 'vue-markdown'
 export default {
+  components: {
+    VueMarkdown
+  },
   props: {
     model: {
       type: Object,
