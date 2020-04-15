@@ -12,12 +12,12 @@
     </v-col>
     <v-col cols="6" align="end">
       <v-btn
-        v-if="$i18n.locale == 'ru'&&this.$route.path!=='/feeds'"
+        v-if="$i18n.locale == 'ru'&&this.$route.path!=='/blog'"
         class="mr-2"
         outlined
         right
         color="white"
-        :to="'/feeds'"
+        :to="'/blog'"
       >
         {{ $t('blog') }}
       </v-btn>
