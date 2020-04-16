@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <Menu />
-    <v-breadcrumbs :items="breadcrumbs">
-      <template v-slot:divider>
-        <v-icon>mdi-chevron-right</v-icon>
-      </template>
-    </v-breadcrumbs>
-    <Feeds :lang="$i18n.locale" />
-  </div>
+  <v-row>
+    <v-col>
+      <v-breadcrumbs :items="breadcrumbs" class="pl-1">
+        <template v-slot:divider>
+          <v-icon>mdi-chevron-right</v-icon>
+        </template>
+      </v-breadcrumbs>
+      <Feeds :lang="$i18n.locale" />
+    </v-col>
+  </v-row>
 </template>
 
 <script>
-import Menu from '@/components/Menu/menu'
 import Feeds from '@/components/Feeds/feeds'
 export default {
+  layout: 'blog',
   components: {
-    Feeds,
-    Menu
+    Feeds
   },
   data: () => ({
     breadcrumbs: [
