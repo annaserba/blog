@@ -24,15 +24,14 @@
       :key="portfolio.fields.slug"
       :index="index"
       cols="12"
-      sm="6"
-      md="6"
-      lg="4"
-      xl="3"
+      sm="12"
+      md="12"
+      lg="6"
+      xl="4"
     >
       <Tile
         :model="portfolio"
         :lang="lang"
-        :url="'portfolio'"
       />
     </v-col>
     <v-col cols="12">
@@ -86,7 +85,7 @@ export default {
     return {
       page: this.$route.params.page ?? 1,
       pageCount: 1,
-      limit: 10,
+      limit: 3,
       portfolios: [],
       loading: true,
       errored: false

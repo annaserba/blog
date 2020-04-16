@@ -24,7 +24,7 @@
       :key="feed.fields.slug"
       :index="index"
       cols="12"
-      sm="6"
+      sm="12"
       md="6"
       lg="4"
       xl="3"
@@ -32,7 +32,7 @@
       <Tile
         :model="feed"
         :lang="lang"
-        :url="'feed'"
+        :url="'feed/'+feed.fields.slug"
       />
     </v-col>
     <v-col cols="12">
