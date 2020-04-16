@@ -14,7 +14,6 @@
 <script>
 import Feeds from '@/components/Feeds/feeds'
 export default {
-  layout: 'blog',
   components: {
     Feeds
   },

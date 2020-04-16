@@ -138,6 +138,7 @@
 <script>
 import MenuItems from '@/components/Menu/menuItems'
 export default {
+  layout: 'main',
   components: {
     MenuItems
   },

@@ -29,9 +29,10 @@
       lg="4"
       xl="3"
     >
-      <ShortFeed
+      <Tile
         :model="feed"
         :lang="lang"
+        :url="'feed'"
       />
     </v-col>
     <v-col cols="12">
@@ -59,14 +60,14 @@
   </v-row>
 </template>
 <script>
-import ShortFeed from '@/components/Feeds/_shortFeed'
+import Tile from '@/components/tile'
 import { createClient } from '~/plugins/contentful.js'
 const query = function (context) {
   const client = createClient()
   client.getEntries({
-    content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+    content_type: 'blogPost',
     order: '-sys.createdAt',
-    select: 'sys.id,fields.slug,fields.title,fields.description,fields.tags,fields.heroImage',
+    select: 'sys.id,fields.slug,fields.title,fields.description,fields.tags,fields.image',
     limit: context.limit,
     skip: (context.page - 1) * 1
   })
@@ -87,7 +88,7 @@ export default {
     }
   },
   components: {
-    ShortFeed
+    Tile
   },
   props: {
     // eslint-disable-next-line vue/require-default-prop

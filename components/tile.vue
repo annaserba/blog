@@ -3,7 +3,7 @@
     class="mx-auto mb-5"
     width="100%"
     nuxt
-    :to="'blog/' + model.fields.slug"
+    :to="url + '/' + model.fields.slug"
   >
     <v-img
       v-if="image"
@@ -36,6 +36,10 @@
 import { createClient } from '~/plugins/contentful.js'
 export default {
   props: {
+    url: {
+      type: String,
+      required: true
+    },
     model: {
       type: Object,
       required: true
@@ -48,9 +52,9 @@ export default {
     }
   },
   mounted () {
-    if (this.model.fields.heroImage) {
+    if (this.model.fields.image) {
       const client = createClient()
-      client.getAsset(this.model.fields.heroImage.sys.id)
+      client.getAsset(this.model.fields.image.sys.id)
         .then((asset) => { this.image = asset.fields.file.url })
         .finally(() => (this.loading = false))
     } else {
