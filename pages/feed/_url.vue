@@ -41,7 +41,7 @@
         {{ $t('noFeed') }}
       </h1>
     </v-col>
-    <v-col cols="12" v-if="model&&model.fields.commentStatus">
+    <v-col v-if="model&&model.fields.commentStatus" cols="12">
       <v-card
         :loading="loading==true?'warning':false"
         tile
