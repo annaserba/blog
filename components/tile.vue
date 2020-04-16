@@ -16,11 +16,13 @@
       {{ model.fields.title }}
     </v-card-title>
     <v-card-text
+      v-if="model.fields.description"
       class="text--primary pb-0"
     >
       {{ model.fields.description }}
     </v-card-text>
     <v-chip-group
+      v-if="model.fields.tags"
       class="pl-2 pr-2"
       column
       active-class="primary--text"
@@ -32,11 +34,31 @@
         {{ tag }}
       </v-chip>
     </v-chip-group>
+    <v-card-actions v-if="model.fields.details">
+      <v-spacer />
+      <v-btn
+        icon
+        @click="show = !show"
+      >
+        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+      </v-btn>
+    </v-card-actions>
+    <v-expand-transition v-if="model.fields.details">
+      <div v-show="show">
+        <v-card-text>
+          <PortfolioLinks :links="model.fields.links" />
+        </v-card-text>
+      </div>
+    </v-expand-transition>
   </v-card>
 </template>
 <script>
+import PortfolioLinks from '@/components/Portfolio/links'
 import { createClient } from '~/plugins/contentful.js'
 export default {
+  components: {
+    PortfolioLinks
+  },
   props: {
     url: {
       type: String,
@@ -51,7 +73,8 @@ export default {
   data () {
     return {
       image: '',
-      loading: true
+      loading: true,
+      show: false
     }
   },
   mounted () {
