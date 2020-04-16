@@ -7,10 +7,10 @@
       v-for="n in limit"
       :key="n"
       cols="12"
-      sm="6"
+      sm="12"
       md="6"
-      lg="4"
-      xl="3"
+      lg="6"
+      xl="4"
     >
       <v-skeleton-loader
         class="mx-auto"
@@ -25,7 +25,7 @@
       :index="index"
       cols="12"
       sm="12"
-      md="12"
+      md="6"
       lg="6"
       xl="4"
     >

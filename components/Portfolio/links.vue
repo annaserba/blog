@@ -2,12 +2,36 @@
   <v-row>
     <v-col
       v-for="(portfolioLink, index) in portfolioLinks"
-      :key="portfolioLink"
+      :key="portfolioLink.sys.id"
       :index="index"
       cols="12"
+      class="pt-0"
     >
-      <v-btn outlined :href="portfolioLink.fields.link" target="_blank">
+      <span>
         {{ portfolioLink.fields.title }}
+      </span>
+      <span>
+        {{ portfolioLink.fields.description }}
+      </span>
+      <v-btn
+        v-if="portfolioLink.fields.link"
+        color="orange"
+        class="float-right"
+        outlined
+        :href="portfolioLink.fields.link"
+        target="_blank"
+      >
+        WebSite
+      </v-btn>
+      <v-btn
+        v-if="portfolioLink.fields.github"
+        color="#24292e"
+        class="float-right mr-3"
+        outlined
+        :href="portfolioLink.fields.github"
+        target="_blank"
+      >
+        Github
       </v-btn>
     </v-col>
   </v-row>
