@@ -1,9 +1,13 @@
 <template>
-  <div>
+  <v-card
+    class="mx-auto mb-5"
+    :loading="loading==true?'warning':false"
+  >
     <v-img
       v-if="image"
       class="white--text align-end float-right mr-5 mb-5"
-      max-width="400px"
+      width="40%"
+      tile
       :src="image"
     />
     <v-card-title>
@@ -26,7 +30,7 @@
         </a>
       </div>
     </v-card-text>
-  </div>
+  </v-card>
 </template>
 <script>
 import VueMarkdown from 'vue-markdown'

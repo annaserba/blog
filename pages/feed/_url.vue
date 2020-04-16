@@ -25,19 +25,33 @@
         width="100%"
       />
     </v-col>
-    <v-col v-else-if="model">
+    <v-col v-else-if="model" cols="12">
+      <Feed
+        :model="model"
+      />
+    </v-col>
+    <v-col
+      v-else-if="!loading"
+      cols="12"
+      align="center"
+    >
+      <h1
+        class="display-2 primary--text"
+      >
+        {{ $t('noFeed') }}
+      </h1>
+    </v-col>
+    <v-col cols="12" v-if="model&&model.fields.commentStatus">
       <v-card
+        :loading="loading==true?'warning':false"
+        tile
         class="mx-auto mb-5"
       >
-        <Feed
-          :model="model"
-        />
         <div
-          v-if="model.fields.commentStatus"
           id="anycomment-app"
           class="pl-4 pr-4 pb-5 pt-2"
         />
-        <script v-if="model.fields.commentStatus">
+        <script v-if="model&&model.fields.commentStatus">
           AnyComment = window.AnyComment || []; AnyComment.Comments = [];
           AnyComment.Comments.push({
           "root": "anycomment-app",
@@ -48,16 +62,6 @@
         </script>
         <script v-if="model.fields.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
       </v-card>
-    </v-col>
-    <v-col
-      v-else-if="!loading"
-      align="center"
-    >
-      <h1
-        class="display-2 primary--text"
-      >
-        {{ $t('noFeed') }}
-      </h1>
     </v-col>
   </v-row>
 </template>
@@ -94,6 +98,7 @@ export default {
     }
   },
   mounted () {
+    const that = this
     const client = createClient()
     client.getEntries({
       content_type: 'blogPost',
@@ -106,7 +111,7 @@ export default {
       .catch((error) => {
         this.errored = true
       })
-      .finally(() => (this.loading = false))
+      .finally(() => (setTimeout(function () { that.loading = false }, 2000)))
   },
   head () {
     return {
