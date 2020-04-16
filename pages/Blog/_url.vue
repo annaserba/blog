@@ -1,39 +1,34 @@
 <template>
-  <div>
-    <Menu />
-    <v-container
-      class="text-center"
-      fill-height
-      max-width="1000"
-      min-width="1000"
-    >
+  <v-row>
+    <v-col cols="8">
+      <v-breadcrumbs :items="breadcrumbs" class="pl-1">
+        <template v-slot:divider>
+          <v-icon>mdi-chevron-right</v-icon>
+        </template>
+      </v-breadcrumbs>
+    </v-col>
+    <v-col cols="4">
+      <v-btn
+        class="mt-3 mr-1 float-right"
+        color="orange"
+        outlined
+        small
+        :to="'/blog'"
+      >
+        {{ $t('back') }}
+      </v-btn>
+    </v-col>
+    <v-col v-if="loading" cols="12">
       <v-skeleton-loader
-        v-if="loading"
         class="mx-auto"
         type="card"
         width="100%"
       />
+    </v-col>
+    <v-col v-else-if="model">
       <v-card
-        v-else-if="model"
         class="mx-auto mb-5 mt-5"
-        width="80%"
       >
-        <v-btn
-          class="mt-5 mr-1"
-          color="orange"
-          outlined
-          absolute
-          right
-          small
-          :to="'/blog'"
-        >
-          {{ $t('back') }}
-        </v-btn>
-        <v-breadcrumbs :items="breadcrumbs">
-          <template v-slot:divider>
-            <v-icon>mdi-chevron-right</v-icon>
-          </template>
-        </v-breadcrumbs>
         <Feed
           :model="model"
         />
@@ -53,30 +48,27 @@
         </script>
         <script v-if="model.fields.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
       </v-card>
-      <v-row
-        v-else-if="!loading"
-        align="center"
+    </v-col>
+    <v-col
+      v-else-if="!loading"
+      align="center"
+    >
+      <h1
+        class="display-2 primary--text"
       >
-        <v-col align="center">
-          <h1
-            class="display-2 primary--text"
-          >
-            {{ $t('noFeed') }}
-          </h1>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+        {{ $t('noFeed') }}
+      </h1>
+    </v-col>
+  </v-row>
 </template>
 <script>
-import Menu from '@/components/Menu/menu'
 import Feed from '@/components/Feeds/_feed'
 import { createClient } from '~/plugins/contentful.js'
 
 export default {
+  layout: 'blog',
   components: {
-    Feed,
-    Menu
+    Feed
   },
   data () {
     return {

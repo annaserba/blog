@@ -1,43 +1,85 @@
 <template>
-  <div class="mt-5 mb-5 pl-5 pr-5">
-    <v-row
-      align="center"
+  <v-row
+    v-if="loading"
+    align="start"
+  >
+    <v-col
+      v-for="n in limit"
+      :key="n"
+      cols="12"
+      sm="6"
+      md="6"
+      lg="4"
+      xl="3"
     >
       <v-skeleton-loader
-        v-if="loading"
         class="mx-auto"
-        max-width="300"
-        min-width="300"
         type="card"
       />
-      <v-col
-        v-for="(feed, index) in feeds"
-        v-else-if="feeds.length"
-        :key="feed.fields.slug"
-        :index="index"
-        cols="12"
-        md="3"
-        sm="6"
+    </v-col>
+  </v-row>
+  <v-row v-else-if="feeds.length">
+    <v-col
+      v-for="(feed, index) in feeds"
+      :key="feed.fields.slug"
+      :index="index"
+      cols="12"
+      sm="6"
+      md="6"
+      lg="4"
+      xl="3"
+    >
+      <ShortFeed
+        :model="feed"
+        :lang="lang"
+      />
+    </v-col>
+    <v-col cols="12">
+      <v-pagination
+        v-if="pageCount>1"
+        v-model="page"
+        :length="pageCount"
+        :total-visible="5"
+        prev-icon="mdi-menu-left"
+        next-icon="mdi-menu-right"
+        @input="next"
+      />
+    </v-col>
+  </v-row>
+  <v-row
+    v-else-if="!loading"
+  >
+    <v-col align="center">
+      <h1
+        class="display-2 primary--text"
       >
-        <ShortFeed
-          :model="feed"
-          :lang="lang"
-        />
-      </v-col>
-      <v-col v-else-if="!loading" align="center">
-        <h1
-          class="display-2 primary--text"
-        >
-          {{ $t('noFeed') }}
-        </h1>
-      </v-col>
-    </v-row>
-  </div>
+        {{ $t('noFeed') }}
+      </h1>
+    </v-col>
+  </v-row>
 </template>
 <script>
 import ShortFeed from '@/components/Feeds/_shortFeed'
 import { createClient } from '~/plugins/contentful.js'
-
+const query = function (context) {
+  const client = createClient()
+  client.getEntries({
+    content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+    order: '-sys.createdAt',
+    select: 'sys.id,fields.slug,fields.title,fields.description,fields.tags,fields.heroImage',
+    limit: context.limit,
+    skip: (context.page - 1) * 1
+  })
+    .then((entries) => {
+      context.feeds = entries.items
+      context.pageCount = Math.ceil(entries.total / entries.limit)
+    })
+    // eslint-disable-next-line handle-callback-err
+    .catch((error) => {
+      context.errored = true
+    })
+    .finally(() => (context.loading = false))
+}
 export default {
   filters: {
     currencydecimal (value) {
@@ -53,26 +95,22 @@ export default {
   },
   data () {
     return {
+      page: this.$route.params.page ?? 1,
+      pageCount: 1,
+      limit: 10,
       feeds: [],
       loading: true,
       errored: false
     }
   },
   mounted () {
-    const client = createClient()
-    client.getEntries({
-      content_type: process.env.CTF_BLOG_POST_TYPE_ID,
-      order: '-sys.createdAt',
-      select: 'sys.id,fields.slug,fields.title,fields.description,fields.tags,fields.heroImage'
-    })
-      .then((entries) => {
-        this.feeds = entries.items
-      })
-      // eslint-disable-next-line handle-callback-err
-      .catch((error) => {
-        this.errored = true
-      })
-      .finally(() => (this.loading = false))
+    query(this)
+  },
+  methods: {
+    next () {
+      this.$router.push({ query: { page: this.page } })
+      query(this)
+    }
   }
 }
 </script>
