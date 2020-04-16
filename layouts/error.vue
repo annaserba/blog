@@ -1,33 +1,25 @@
 <template>
-  <v-app dark>
-    <v-container
-      class="text-center"
-      fill-height
-      style="height: calc(100vh - 58px);"
-    >
-      <v-row align="center">
-        <v-col>
-          <h1
-            v-if="error.statusCode === 404"
-            class="display-2 primary--text"
-          >
-            {{ pageNotFound }}
-          </h1>
-          <h1
-            v-else
-            class="display-2 primary--text"
-          >
-            {{ otherError }}
-          </h1>
+  <v-row align="center" justify="center">
+    <v-col cols="12" class="text-center">
+      <h1
+        v-if="error.statusCode === 404"
+        class="display-2 primary--text"
+      >
+        {{ pageNotFound }}
+      </h1>
+      <h1
+        v-else
+        class="display-2 primary--text"
+      >
+        {{ otherError }}
+      </h1>
 
-          <p>The page you were looking for does not exist</p>
-          <NuxtLink to="/">
-            Home page
-          </NuxtLink>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-app>
+      <p>The page you were looking for does not exist</p>
+      <NuxtLink to="/">
+        Home page
+      </NuxtLink>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
