@@ -2,11 +2,13 @@
   <v-card
     class="mx-auto mb-5"
     width="100%"
+    tile
+    :loading="loading==true?'warning':false"
     nuxt
-    :to="url + '/' + model.fields.slug"
+    :to="url"
   >
     <v-img
-      v-if="image"
+      v-if="image&&loading==false"
       class="white--text align-end"
       :src="image"
     />
@@ -38,7 +40,8 @@ export default {
   props: {
     url: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     },
     model: {
       type: Object,
@@ -52,11 +55,12 @@ export default {
     }
   },
   mounted () {
+    const that = this
     if (this.model.fields.image) {
       const client = createClient()
       client.getAsset(this.model.fields.image.sys.id)
         .then((asset) => { this.image = asset.fields.file.url })
-        .finally(() => (this.loading = false))
+        .finally(() => (setTimeout(function () { that.loading = false }, 1000)))
     } else {
       this.loading = false
     }

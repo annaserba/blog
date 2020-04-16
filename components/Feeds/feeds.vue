@@ -32,7 +32,7 @@
       <Tile
         :model="feed"
         :lang="lang"
-        :url="'feed'"
+        :url="'feed/'+feed.fields.slug"
       />
     </v-col>
     <v-col cols="12">
