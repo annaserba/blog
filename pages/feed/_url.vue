@@ -27,7 +27,7 @@
     </v-col>
     <v-col v-else-if="model">
       <v-card
-        class="mx-auto mb-5 mt-5"
+        class="mx-auto mb-5"
       >
         <Feed
           :model="model"
@@ -66,7 +66,6 @@ import Feed from '@/components/Feeds/_feed'
 import { createClient } from '~/plugins/contentful.js'
 
 export default {
-  layout: 'blog',
   components: {
     Feed
   },
@@ -97,7 +96,7 @@ export default {
   mounted () {
     const client = createClient()
     client.getEntries({
-      content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+      content_type: 'blogPost',
       'fields.slug': this.$route.params.url
     })
       .then((entries) => {

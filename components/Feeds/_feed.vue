@@ -48,9 +48,9 @@ export default {
     }
   },
   mounted () {
-    if (this.model.fields.heroImage) {
+    if (this.model.fields.image) {
       const client = createClient()
-      client.getAsset(this.model.fields.heroImage.sys.id)
+      client.getAsset(this.model.fields.image.sys.id)
         .then((asset) => { this.image = asset.fields.file.url })
         .finally(() => (this.loading = false))
     } else {
