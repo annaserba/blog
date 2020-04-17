@@ -26,13 +26,11 @@ export default {
   ** Global CSS
   */
   css: [
-    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/fontawesome.js'
   ],
   env: {
     baseUrl: process.env.BASE_URL || 'https://localhost:44354',
@@ -48,7 +46,11 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    ['@nuxtjs/fontawesome', {
+      component: 'fa',
+      suffix: true
+    }]
   ],
   /*
   ** Nuxt.js modules

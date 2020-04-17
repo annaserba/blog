@@ -1,5 +1,8 @@
 <template>
   <v-row>
+    <v-col cols="12">
+      {{ $t('linksProjects') }}
+    </v-col>
     <v-col
       v-for="(portfolioLink, index) in portfolioLinks"
       :key="portfolioLink.sys.id"
@@ -19,10 +22,11 @@
         class="float-right"
         outlined
         tile
+        small
         :href="portfolioLink.fields.link"
         target="_blank"
       >
-        WebSite  <fa class="ml-1" :icon="['fas', 'faExpandAlt']" />
+        WebSite  <fa-icon class="ml-1" :icon="faExternalLinkAlt" />
       </v-btn>
       <v-btn
         v-if="portfolioLink.fields.github"
@@ -30,16 +34,19 @@
         dark
         depressed
         tile
+        small
         class="float-right mr-3"
         :href="portfolioLink.fields.github"
         target="_blank"
       >
-        Github  <fa class="ml-1" :icon="['fab', 'github']" />
+        Github  <fa-icon class="ml-1" :icon="faGithub" />
       </v-btn>
     </v-col>
   </v-row>
 </template>
 <script>
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { createClient } from '~/plugins/contentful.js'
 const query = function (context) {
   const linksQuery = (context.links ? context.links.map(l => l.sys.id) : []).join()
@@ -77,6 +84,14 @@ export default {
       portfolioLinks: [],
       loading: true,
       errored: false
+    }
+  },
+  computed: {
+    faGithub () {
+      return faGithub
+    },
+    faExternalLinkAlt () {
+      return faExternalLinkAlt
     }
   },
   mounted () {

@@ -34,12 +34,19 @@
         {{ tag }}
       </v-chip>
     </v-chip-group>
+    <v-card-text v-if="model.fields.details==false && model.fields.links">
+      <PortfolioLinks :links="model.fields.links" />
+    </v-card-text>
     <v-card-actions v-if="model.fields.details">
       <v-spacer />
       <v-btn
-        icon
+        color="orange"
+        outlined
+        tile
+        small
         @click="show = !show"
       >
+        {{ $t('moreDetails') }}
         <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
       </v-btn>
     </v-card-actions>
