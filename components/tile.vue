@@ -34,7 +34,7 @@
         {{ tag }}
       </v-chip>
     </v-chip-group>
-    <v-col v-if="model.fields.links" cols="12">
+    <v-col v-if="model.fields.links" cols="12" class="pb-0">
       <PortfolioLinks :links="model.fields.links" />
     </v-col>
   </v-card>
