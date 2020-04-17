@@ -17,7 +17,8 @@ export default (context) => {
       blog: 'Блог',
       back: 'Назад',
       noFeed: 'Нет публикаций',
-      services: 'Услуги'
+      services: 'Услуги',
+      linksProjects: 'Ссылки на проекты'
     })
   })
 }

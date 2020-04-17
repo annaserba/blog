@@ -1,5 +1,8 @@
 <template>
   <v-row>
+    <v-col cols="12">
+      {{ $t('linksProjects') }}
+    </v-col>
     <v-col
       v-for="(portfolioLink, index) in portfolioLinks"
       :key="portfolioLink.sys.id"
@@ -19,6 +22,7 @@
         class="float-right"
         outlined
         tile
+        small
         :href="portfolioLink.fields.link"
         target="_blank"
       >
@@ -30,6 +34,7 @@
         dark
         depressed
         tile
+        small
         class="float-right mr-3"
         :href="portfolioLink.fields.github"
         target="_blank"

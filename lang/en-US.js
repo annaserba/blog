@@ -17,7 +17,8 @@ export default (context) => {
       blog: 'Blog',
       back: 'Back',
       noFeed: 'No feed(s)',
-      services: 'Services'
+      services: 'Services',
+      linksProjects: 'Links projects'
     })
   })
 }
