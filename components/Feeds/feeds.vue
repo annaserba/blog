@@ -35,9 +35,8 @@
         :url="'feed/'+feed.fields.slug"
       />
     </v-col>
-    <v-col cols="12">
+    <v-col v-if="pageCount>1" cols="12">
       <v-pagination
-        v-if="pageCount>1"
         v-model="page"
         :length="pageCount"
         :total-visible="5"
