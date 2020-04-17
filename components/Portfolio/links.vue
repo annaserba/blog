@@ -19,7 +19,7 @@
       <v-btn
         v-if="portfolioLink.fields.link"
         color="orange"
-        class="float-right"
+        class="float-right ml-3"
         outlined
         tile
         small
@@ -35,7 +35,7 @@
         depressed
         tile
         small
-        class="float-right mr-3"
+        class="float-right"
         :href="portfolioLink.fields.github"
         target="_blank"
       >
