@@ -56,7 +56,8 @@ const query = function (context) {
     content_type: 'portfolio',
     order: '-sys.createdAt',
     limit: context.limit,
-    skip: (context.page - 1) * 1
+    skip: (context.page - 1) * 1,
+    locale: context.$i18n.locales.filter(l => l.code === context.$i18n.locale)[0].contentfulName
   })
     .then((entries) => {
       context.portfolios = entries.items

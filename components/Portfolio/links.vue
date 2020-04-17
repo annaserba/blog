@@ -18,20 +18,23 @@
         color="orange"
         class="float-right"
         outlined
+        tile
         :href="portfolioLink.fields.link"
         target="_blank"
       >
-        WebSite
+        WebSite  <fa class="ml-1" :icon="['fas', 'faExpandAlt']" />
       </v-btn>
       <v-btn
         v-if="portfolioLink.fields.github"
         color="#24292e"
+        dark
+        depressed
+        tile
         class="float-right mr-3"
-        outlined
         :href="portfolioLink.fields.github"
         target="_blank"
       >
-        Github
+        Github  <fa class="ml-1" :icon="['fab', 'github']" />
       </v-btn>
     </v-col>
   </v-row>
@@ -44,7 +47,8 @@ const query = function (context) {
   client.getEntries({
     content_type: 'portfolioLinks',
     order: '-sys.createdAt',
-    'sys.id[in]': linksQuery
+    'sys.id[in]': linksQuery,
+    locale: context.$i18n.locales.filter(l => l.code === context.$i18n.locale)[0].contentfulName
   })
     .then((entries) => {
       context.portfolioLinks = entries.items

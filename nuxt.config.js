@@ -74,11 +74,13 @@ export default {
         locales: [
           {
             code: 'en',
-            file: 'en-US.js'
+            file: 'en-US.js',
+            contentfulName: 'en-US'
           },
           {
             code: 'ru',
-            file: 'ru-RU.js'
+            file: 'ru-RU.js',
+            contentfulName: 'ru-RU'
           }
         ],
         lazy: true,

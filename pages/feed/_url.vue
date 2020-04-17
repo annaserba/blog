@@ -102,7 +102,8 @@ export default {
     const client = createClient()
     client.getEntries({
       content_type: 'blogPost',
-      'fields.slug': this.$route.params.url
+      'fields.slug': this.$route.params.url,
+      locale: this.$i18n.locales.filter(l => l.code === this.$i18n.locale)[0].contentfulName
     })
       .then((entries) => {
         this.model = entries.items[0]
