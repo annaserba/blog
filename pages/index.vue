@@ -30,49 +30,19 @@
             {{ person.fields.shortBio }}
           </p>
         </v-col>
-        <v-col class="text-center" cols="12">
+        <v-col v-if="person && person.fields.basicSkils" class="text-center" cols="12">
           <h3 class="display-1 font-weight-thin mt-4 mb-4">
             {{ $t('basicSkilsHead') }}
           </h3>
           <v-chip
+            v-for="basicSkil in person.fields.basicSkils"
+            :key="basicSkil"
             class="ma-2 "
             color="primary"
             outlined
             label
           >
-            C#
-          </v-chip>
-          <v-chip
-            class="ma-2"
-            color="primary"
-            outlined
-            label
-          >
-            HTML
-          </v-chip>
-          <v-chip
-            class="ma-2"
-            color="primary"
-            outlined
-            label
-          >
-            CSS
-          </v-chip>
-          <v-chip
-            class="ma-2"
-            color="primary"
-            outlined
-            label
-          >
-            JavaScript
-          </v-chip>
-          <v-chip
-            class="ma-2 "
-            color="primary"
-            outlined
-            label
-          >
-            Vue.js
+            {{ basicSkil }}
           </v-chip>
         </v-col>
       </v-row>
