@@ -86,7 +86,7 @@ export default {
     return {
       page: this.$route.params.page ?? 1,
       pageCount: 1,
-      limit: 3,
+      limit: 4,
       portfolios: [],
       loading: true,
       errored: false
