@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="mx-auto mb-5"
+    class="mx-auto mb-5 fill-height"
     width="100%"
     tile
     :loading="loading==true?'warning':false"
@@ -12,7 +12,7 @@
       class="white--text align-end"
       :src="image"
     />
-    <v-card-title>
+    <v-card-title v-if="model.fields.title">
       {{ model.fields.title }}
     </v-card-title>
     <v-card-text
@@ -34,29 +34,9 @@
         {{ tag }}
       </v-chip>
     </v-chip-group>
-    <v-card-text v-if="model.fields.details==false && model.fields.links">
+    <v-col v-if="model.fields.links" cols="12" class="pb-0">
       <PortfolioLinks :links="model.fields.links" />
-    </v-card-text>
-    <v-card-actions v-if="model.fields.details">
-      <v-spacer />
-      <v-btn
-        color="orange"
-        outlined
-        tile
-        small
-        @click="show = !show"
-      >
-        {{ $t('moreDetails') }}
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-    <v-expand-transition v-if="model.fields.details">
-      <div v-show="show">
-        <v-card-text>
-          <PortfolioLinks :links="model.fields.links" />
-        </v-card-text>
-      </div>
-    </v-expand-transition>
+    </v-col>
   </v-card>
 </template>
 <script>

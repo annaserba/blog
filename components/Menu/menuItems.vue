@@ -38,6 +38,15 @@
       >
         {{ $t('blog') }}
       </v-btn>
+      <v-btn
+        v-if="$i18n.locale == 'ru'&&this.$route.path!=='/portfolio'"
+        class="float-right mr-2"
+        outlined
+        color="white"
+        :to="'/portfolio'"
+      >
+        {{ $t('portfolio') }}
+      </v-btn>
     </v-col>
   </v-row>
 </template>

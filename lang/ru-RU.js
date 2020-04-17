@@ -18,7 +18,8 @@ export default (context) => {
       back: 'Назад',
       noFeed: 'Нет публикаций',
       services: 'Услуги',
-      linksProjects: 'Ссылки на проекты'
+      linksProjects: 'Ссылки на проекты',
+      portfolio: 'Портфолио'
     })
   })
 }
