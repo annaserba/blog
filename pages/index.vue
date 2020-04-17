@@ -6,11 +6,11 @@
     <v-parallax dark src="/img/back.png">
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
-          <h1 class="display-1 font-weight-thin ">
-            {{ $t('my_name') }}
+          <h1 v-if="person && person.fields.name" class="display-1 font-weight-thin ">
+            {{ person.fields.name }}
           </h1>
-          <h2 class="subheading">
-            {{ $t('subheading') }}
+          <h2 v-if="person && person.fields.title" class="subheading">
+            {{ person.fields.title }}
           </h2>
         </v-col>
       </v-row>
@@ -22,12 +22,12 @@
         align="center"
         justify="center"
       >
-        <v-col class="text-center " cols="12">
+        <v-col v-if="person && person.fields.shortBio" class="text-center " cols="12">
           <h3 class="display-1 font-weight-thin mt-4 mb-4">
             {{ $t('aboutMeHead') }}
           </h3>
           <p class="pl-12 pr-12 mb-0">
-            {{ $t('aboutMe') }}
+            {{ person.fields.shortBio }}
           </p>
         </v-col>
         <v-col class="text-center" cols="12">
@@ -85,29 +85,21 @@
         </h3>
         <v-col class="text-center" cols="12">
           <v-btn
-            v-if="$i18n.locale === 'en'"
+            v-if="person && person.fields.github"
             color="primary"
             depressed
-            href="https://hh.ru/resume/6a5cea43ff0327c3fd0039ed1f4c694f583857"
+            :href="person && person.fields.hh"
             target="_blank"
           >
             {{ $t('resume') }}
           </v-btn>
           <v-btn
-            v-if="$i18n.locale === 'ru'"
-            color="primary"
-            depressed
-            href="https://hh.ru/resume/7af89ac0ff074b181a0039ed1f74687968354e"
-            target="_blank"
-          >
-            {{ $t('resume') }}
-          </v-btn>
-          <v-btn
+            v-if="person && person.fields.github"
             class="ml-4"
             color="#24292e"
             dark
             depressed
-            href="https://github.com/annaserba"
+            :href="person && person.fields.github"
             target="_blank"
           >
             GitHub  <fa class="ml-1" :icon="['fab', 'github']" />
@@ -137,13 +129,34 @@
 </style>
 <script>
 import MenuItems from '@/components/Menu/menuItems'
+import { createClient } from '~/plugins/contentful.js'
 export default {
   layout: 'main',
   components: {
     MenuItems
   },
+  asyncData ({ app, env }) {
+    const client = createClient()
+    return Promise.all([
+      client.getEntries({
+        'sys.id': env.CTF_PERSON_ID,
+        locale: app.i18n.locales.filter(l => l.code === app.i18n.locale)[0].contentfulName
+      })
+    ]).then(([entries]) => {
+      return {
+        person: entries.items[0]
+      }
+    })
+      // eslint-disable-next-line handle-callback-err
+      .catch((error) => {
+        return {
+          errored: true
+        }
+      })
+  },
   data () {
     return {
+      loading: true,
       yearExperience: (new Date(Date.now()).getFullYear()) - 2016
     }
   },

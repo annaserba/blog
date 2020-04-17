@@ -7,7 +7,7 @@
       v-for="n in limit"
       :key="n"
       cols="12"
-      sm="6"
+      sm="12"
       md="6"
       lg="4"
       xl="3"
@@ -69,7 +69,8 @@ const query = function (context) {
     order: '-sys.createdAt',
     select: 'sys.id,fields.slug,fields.title,fields.description,fields.tags,fields.image',
     limit: context.limit,
-    skip: (context.page - 1) * 1
+    skip: (context.page - 1) * 1,
+    locale: context.$i18n.locales.filter(l => l.code === context.$i18n.locale)[0].contentfulName
   })
     .then((entries) => {
       context.feeds = entries.items

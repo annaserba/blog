@@ -7,10 +7,10 @@
       v-for="n in limit"
       :key="n"
       cols="12"
-      sm="6"
+      sm="12"
       md="6"
-      lg="4"
-      xl="3"
+      lg="6"
+      xl="4"
     >
       <v-skeleton-loader
         class="mx-auto"
@@ -25,7 +25,7 @@
       :index="index"
       cols="12"
       sm="12"
-      md="12"
+      md="6"
       lg="6"
       xl="4"
     >
@@ -56,7 +56,8 @@ const query = function (context) {
     content_type: 'portfolio',
     order: '-sys.createdAt',
     limit: context.limit,
-    skip: (context.page - 1) * 1
+    skip: (context.page - 1) * 1,
+    locale: context.$i18n.locales.filter(l => l.code === context.$i18n.locale)[0].contentfulName
   })
     .then((entries) => {
       context.portfolios = entries.items
