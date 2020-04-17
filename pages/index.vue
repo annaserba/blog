@@ -61,7 +61,7 @@
             :href="person && person.fields.hh"
             target="_blank"
           >
-            {{ $t('resume') }}
+            {{ $t('resume') }} <fa-icon class="ml-1" :icon="faExternalLinkAlt" />
           </v-btn>
           <v-btn
             v-if="person && person.fields.github"
@@ -72,7 +72,7 @@
             :href="person && person.fields.github"
             target="_blank"
           >
-            GitHub  <fa class="ml-1" :icon="['fab', 'github']" />
+            GitHub  <fa-icon class="ml-1" :icon="faGithub" />
           </v-btn>
         </v-col>
         <!-- <v-col class="text-center" cols="12">
@@ -98,6 +98,8 @@
 }
 </style>
 <script>
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import MenuItems from '@/components/Menu/menuItems'
 import { createClient } from '~/plugins/contentful.js'
 export default {
@@ -128,6 +130,14 @@ export default {
     return {
       loading: true,
       yearExperience: (new Date(Date.now()).getFullYear()) - 2016
+    }
+  },
+  computed: {
+    faGithub () {
+      return faGithub
+    },
+    faExternalLinkAlt () {
+      return faExternalLinkAlt
     }
   },
   head () {
