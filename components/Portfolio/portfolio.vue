@@ -54,7 +54,7 @@ const query = function (context) {
   const client = createClient()
   client.getEntries({
     content_type: 'portfolio',
-    order: '-sys.createdAt',
+    order: '-sys.updatedAt',
     limit: context.limit,
     skip: (context.page - 1) * 1,
     locale: context.$i18n.locales.filter(l => l.code === context.$i18n.locale)[0].contentfulName
