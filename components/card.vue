@@ -62,12 +62,6 @@ export default {
     }
   },
   methods: {
-    formatDate (date) {
-      if (!date) { return null }
-
-      const [year, month, day] = date.split('T')[0].split('-')
-      return `${month}/${day}/${year}`
-    }
   },
   head () {
     return {
@@ -77,8 +71,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.v-application p {
-  margin-bottom: 0;
-}
-</style>
