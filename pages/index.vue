@@ -3,7 +3,7 @@
     <div class="header">
       <MenuItems />
     </div>
-    <v-parallax dark src="/img/back.png">
+    <v-parallax dark :src="image">
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
           <h1 v-if="person && person.fields.name" class="display-1 font-weight-thin ">
@@ -110,21 +110,18 @@ export default {
   },
   asyncData ({ app, env }) {
     const client = createClient()
-    return Promise.all([
-      client.getEntries({
-        'sys.id': env.CTF_PERSON_ID,
-        locale: app.i18n.locales.filter(l => l.code === app.i18n.locale)[0].contentfulName
-      })
-    ]).then(([entries]) => {
-      return {
-        person: entries.items[0]
-      }
+    return client.getEntries({
+      'sys.id': env.CTF_PERSON_ID,
+      locale: app.i18n.locales.filter(l => l.code === app.i18n.locale)[0].contentfulName
     })
-      // eslint-disable-next-line handle-callback-err
-      .catch((error) => {
-        return {
-          errored: true
-        }
+      .then((entries) => {
+        return client.getAsset(entries.items[0].fields.image.sys.id)
+          .then((asset) => {
+            return {
+              person: entries.items[0],
+              image: asset.fields.file.url
+            }
+          })
       })
   },
   data () {

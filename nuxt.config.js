@@ -37,8 +37,9 @@ export default {
     thisUrl: process.env.THISURL || '.',
     CTF_SPACE_ID: process.env.CTF_SPACE_ID || '',
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN || '',
-    CTF_PERSON_ID: process.env.CTF_PERSON_ID || '',
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID || ''
+    CTF_PERSON_ID: process.env.CTF_PERSON_ID || '15jwOBqpxqSAOy2eOO4S0m',
+    CTF_ASSET_ID: process.env.CTF_ASSET_ID || 'F3Jo22DFufZBUYARmYX62'
   },
   /*
   ** Nuxt.js dev-modules
