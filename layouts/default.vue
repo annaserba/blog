@@ -4,7 +4,6 @@
     <v-container
       align-start
       fill-height
-      max-width="1000"
     >
       <nuxt />
     </v-container>

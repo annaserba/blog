@@ -26,8 +26,7 @@
       cols="12"
       sm="12"
       md="6"
-      lg="6"
-      xl="4"
+      xl="3"
     >
       <Tile
         :model="portfolio"

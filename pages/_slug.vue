@@ -7,17 +7,6 @@
         </template>
       </v-breadcrumbs>
     </v-col>
-    <v-col cols="4">
-      <v-btn
-        class="mt-3 mr-1 float-right"
-        color="orange"
-        outlined
-        small
-        :to="'/blog'"
-      >
-        {{ $t('back') }}
-      </v-btn>
-    </v-col>
     <v-col v-if="loading" cols="12">
       <v-skeleton-loader
         class="mx-auto"
@@ -26,7 +15,7 @@
       />
     </v-col>
     <v-col v-else-if="model" cols="12">
-      <Feed
+      <Page
         :model="model"
       />
     </v-col>
@@ -41,37 +30,15 @@
         {{ $t('noFeed') }}
       </h1>
     </v-col>
-    <v-col v-if="model&&model.fields.commentStatus" cols="12">
-      <v-card
-        :loading="loading==true?'warning':false"
-        tile
-        class="mx-auto mb-5"
-      >
-        <div
-          id="anycomment-app"
-          class="pl-4 pr-4 pb-5 pt-2"
-        />
-        <script v-if="model&&model.fields.commentStatus">
-          AnyComment = window.AnyComment || []; AnyComment.Comments = [];
-          AnyComment.Comments.push({
-          "root": "anycomment-app",
-          "app_id": 742,
-          "track_get_params": true,
-          "language": "ru"
-          })
-        </script>
-        <script v-if="model.fields.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
-      </v-card>
-    </v-col>
   </v-row>
 </template>
 <script>
-import Feed from '@/components/card'
+import Page from '@/components/card'
 import { createClient } from '~/plugins/contentful.js'
 
 export default {
   components: {
-    Feed
+    Page
   },
   data () {
     return {
@@ -86,12 +53,7 @@ export default {
           to: '/'
         },
         {
-          text: 'Blog',
-          disabled: false,
-          href: '/blog'
-        },
-        {
-          text: 'Feed',
+          text: 'Page',
           disabled: true
         }
       ]
@@ -101,7 +63,7 @@ export default {
     const that = this
     const client = createClient()
     client.getEntries({
-      content_type: 'blogPost',
+      content_type: 'page',
       'fields.slug': this.$route.params.url,
       locale: this.$i18n.locales.filter(l => l.code === this.$i18n.locale)[0].contentfulName
     })
