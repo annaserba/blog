@@ -18,7 +18,6 @@
 <script>
 import Menu from '@/components/Menu/menu'
 export default {
-  layout: 'blog',
   components: {
     Menu
   }
