@@ -47,6 +47,7 @@
         </v-col>
       </v-row>
       <v-row
+        v-if="person && (person.fields.hh || person.fields.github)"
         align="center"
         justify="center"
       >
@@ -55,7 +56,7 @@
         </h3>
         <v-col class="text-center" cols="12">
           <v-btn
-            v-if="person && person.fields.github"
+            v-if="person && person.fields.hh"
             color="primary"
             depressed
             :href="person && person.fields.hh"
@@ -143,7 +144,7 @@ export default {
   head () {
     return {
       titleTemplate: '',
-      title: 'Anna Serba',
+      title: this.person.fields.name,
       meta: [
         { hid: 'description', name: 'description', content: this.$t('aboutMe') }
       ]
