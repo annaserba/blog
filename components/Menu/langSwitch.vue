@@ -12,7 +12,7 @@
     </template>
     <v-list>
       <v-list-item
-        v-for="lang in $i18n.locales"
+        v-for="lang in $i18n.locales.filter(locale=>locale.code!=$i18n.locale)"
         :key="lang.code"
         :to="switchLocalePath(lang.code)"
       >
