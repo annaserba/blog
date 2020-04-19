@@ -77,12 +77,12 @@ export default {
           {
             code: 'en',
             file: 'en-US.js',
-            contentfulName: 'en-US'
+            contentfulName: 'en'
           },
           {
             code: 'ru',
             file: 'ru-RU.js',
-            contentfulName: 'ru-RU'
+            contentfulName: 'ru'
           }
         ],
         lazy: true,
