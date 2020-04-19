@@ -72,7 +72,7 @@ const query = function (context) {
     locale: context.$i18n.locales.filter(l => l.code === context.$i18n.locale)[0].contentfulName
   })
     .then((entries) => {
-      context.feeds = entries.items
+      context.feeds = entries.items.filter(feed => feed.fields.title)
       context.pageCount = Math.ceil(entries.total / entries.limit)
     })
     // eslint-disable-next-line handle-callback-err
