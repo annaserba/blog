@@ -7,6 +7,7 @@
     >
       <nuxt />
     </v-container>
+    <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8" />
   </v-app>
 </template>
 <script>
