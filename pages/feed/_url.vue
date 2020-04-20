@@ -29,7 +29,6 @@
       <Feed
         :model="model"
       />
-      <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8" />
     </v-col>
     <v-col
       v-else-if="!loading"

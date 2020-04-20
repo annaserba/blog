@@ -35,8 +35,8 @@ export default {
   env: {
     baseUrl: process.env.BASE_URL || 'https://localhost:44354',
     thisUrl: process.env.THISURL || '.',
-    CTF_SPACE_ID: process.env.CTF_SPACE_ID || 'jqlq9k14yhkd',
-    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN || 'HXkeAU9lHEfPkKJBQjwgOQjmHkTxQURPxCer9KJ7uFc',
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID || '',
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN || '',
     CTF_PERSON_ID: process.env.CTF_PERSON_ID || '15jwOBqpxqSAOy2eOO4S0m',
     CTF_ASSET_ID: process.env.CTF_ASSET_ID || 'F3Jo22DFufZBUYARmYX62'
   },
