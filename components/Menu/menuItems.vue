@@ -11,18 +11,19 @@
       >
         {{ name }}
       </v-btn>
-      <div class="float-right" style="width:70px">
+      <div class="float-right d-none d-sm-flex" style="width:64px">
         <LangSwitch />
       </div>
       <div
         v-for="item in items"
         :key="item.sys.id"
-        class="float-right mr-2"
+        class="float-right mr-2 d-none d-sm-flex"
       >
         <v-btn
           v-if="!$route.path.toLowerCase().endsWith('/'+item.fields.slug.toLowerCase())
             && !$route.path.toLowerCase().endsWith('/'+$i18n.locale+'/'+item.fields.slug.toLowerCase())"
           outlined
+          nuxt
           color="white"
           :to="($i18n.defaultLocale!=$i18n.locale?'/'+$i18n.locale:'')+'/'+item.fields.slug"
         >
