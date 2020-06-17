@@ -20,8 +20,8 @@
         class="float-right mr-2"
       >
         <v-btn
-          v-if="$route.path.toLowerCase()!='/'+item.fields.slug.toLowerCase()
-            && $route.path.toLowerCase()!='/'+$i18n.locale+'/'+item.fields.slug.toLowerCase()"
+          v-if="!$route.path.toLowerCase().endsWith('/'+item.fields.slug.toLowerCase())
+            && !$route.path.toLowerCase().endsWith('/'+$i18n.locale+'/'+item.fields.slug.toLowerCase())"
           outlined
           color="white"
           :to="($i18n.defaultLocale!=$i18n.locale?'/'+$i18n.locale:'')+'/'+item.fields.slug"
