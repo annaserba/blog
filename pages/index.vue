@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="header">
-      <MenuItems :items="items" />
-    </div>
+    <Menu :items="items" />
     <v-parallax dark :src="image">
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
@@ -90,22 +88,15 @@
     </v-container>
   </div>
 </template>
-<style scope>
-.header{
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  padding: 4px 16px;
-}
-</style>
+
 <script>
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import MenuItems from '@/components/Menu/menuItems'
+import Menu from '@/components/Menu/menu'
 import { createClient } from '~/plugins/contentful.js'
 export default {
   components: {
-    MenuItems
+    Menu
   },
   asyncData ({ app, env }) {
     const client = createClient()
