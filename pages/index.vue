@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header">
-      <MenuItems />
+      <MenuItems :items="items" />
     </div>
     <v-parallax dark :src="image">
       <v-row align="center" justify="center">
@@ -104,25 +104,29 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import MenuItems from '@/components/Menu/menuItems'
 import { createClient } from '~/plugins/contentful.js'
 export default {
-  layout: 'main',
   components: {
     MenuItems
   },
   asyncData ({ app, env }) {
     const client = createClient()
-    return client.getEntries({
+    return Promise.all([client.getEntries({
       'sys.id': env.CTF_PERSON_ID,
       locale: app.i18n.locales.filter(l => l.code === app.i18n.locale)[0].contentfulName
+    }), client.getEntries({
+      content_type: 'menu',
+      order: '-fields.order',
+      locale: app.i18n.locales.filter(l => l.code === app.i18n.locale)[0].contentfulName
     })
-      .then((entries) => {
-        return client.getAsset(entries.items[0].fields.image.sys.id)
-          .then((asset) => {
-            return {
-              person: entries.items[0],
-              image: asset.fields.file.url
-            }
-          })
-      })
+    ]).then(([person, menuItems]) => {
+      return client.getAsset(person.items[0].fields.image.sys.id)
+        .then((asset) => {
+          return {
+            person: person.items[0],
+            image: asset.fields.file.url,
+            items: menuItems.items
+          }
+        })
+    })
   },
   data () {
     return {
