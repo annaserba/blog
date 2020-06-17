@@ -1,62 +1,94 @@
 <template>
-  <v-row>
-    <v-col cols="8">
-      <v-breadcrumbs :items="breadcrumbs" class="pl-1">
-        <template v-slot:divider>
-          <v-icon>mdi-chevron-right</v-icon>
-        </template>
-      </v-breadcrumbs>
-    </v-col>
-    <v-col v-if="loading" cols="12">
-      <v-skeleton-loader
-        class="mx-auto"
-        type="card"
-        width="100%"
-      />
-    </v-col>
-    <v-col v-else-if="model" cols="12">
-      <Page
-        :model="model"
-      />
-    </v-col>
-    <v-col
-      v-else-if="!loading"
-      cols="12"
-      align="center"
+  <div>
+    <Menu :name="name" :items="items" :image="image" />
+    <v-container
+      align-start
+      fill-height
     >
-      <h1
-        class="display-2 primary--text"
-      >
-        {{ $t('noFeed') }}
-      </h1>
-    </v-col>
-  </v-row>
+      <v-row>
+        <v-col cols="8">
+          <v-breadcrumbs :items="breadcrumbs" class="pl-1">
+            <template v-slot:divider>
+              <v-icon>mdi-chevron-right</v-icon>
+            </template>
+          </v-breadcrumbs>
+        </v-col>
+        <v-col v-if="loading" cols="12">
+          <v-skeleton-loader
+            class="mx-auto"
+            type="card"
+            width="100%"
+          />
+        </v-col>
+        <v-col v-else-if="model" cols="12">
+          <Page
+            :model="model"
+          />
+        </v-col>
+        <v-col
+          v-else-if="!loading"
+          cols="12"
+          align="center"
+        >
+          <h1
+            class="display-2 primary--text"
+          >
+            {{ $t('noFeed') }}
+          </h1>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
+<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8" />
 <script>
+import Menu from '@/components/Menu/menu'
 import Page from '@/components/card'
 import { createClient } from '~/plugins/contentful.js'
 
 export default {
   components: {
+    Menu,
     Page
+  },
+  asyncData ({ env, app }) {
+    const client = createClient()
+    return Promise.all([client.getEntries({
+      'sys.id': env.CTF_PERSON_ID,
+      locale: app.i18n.locales.filter(l => l.code === app.i18n.locale)[0].contentfulName
+    }), client.getEntries({
+      content_type: 'menu',
+      order: '-fields.order',
+      locale: app.i18n.locales.filter(l => l.code === app.i18n.locale)[0].contentfulName
+    })
+    ]).then(([person, menuItems]) => {
+      return client.getAsset(person.items[0].fields.image.sys.id)
+        .then((asset) => {
+          return {
+            name: person.items[0].fields.name,
+            image: asset.fields.file.url,
+            items: menuItems.items,
+            breadcrumbs: [
+              {
+                text: 'Profile',
+                disabled: false,
+                to: '/'
+              },
+              {
+                text: 'Page',
+                disabled: true
+              }
+            ]
+          }
+        })
+    })
   },
   data () {
     return {
       model: null,
       url: this.$route.params.url,
       loading: true,
-      errored: false,
-      breadcrumbs: [
-        {
-          text: 'Profile',
-          disabled: false,
-          to: '/'
-        },
-        {
-          text: 'Page',
-          disabled: true
-        }
-      ]
+      errored: false
     }
   },
   mounted () {
