@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <v-card flat>
     <Menu :name="name" :items="items" :image="image" />
     <v-container
+      class="mt-14"
       align-start
       fill-height
     >
@@ -16,7 +17,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </div>
+  </v-card>
 </template>
 
 <script>
