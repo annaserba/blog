@@ -1,10 +1,11 @@
 <template>
-  <v-card flat>
+  <v-card flat :style="{'min-height':'100%'}">
     <Menu :name="name" :items="items" :image="image" />
     <v-container
       class="mt-14"
       align-start
       fill-height
+      align-content-start
     >
       <v-breadcrumbs :items="breadcrumbs" class="pl-1">
         <template v-slot:divider>
