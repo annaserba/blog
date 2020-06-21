@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <Menu :items="items" />
-    <v-parallax dark :src="image">
+  <v-card flat>
+    <Menu :name="person.fields.name" :items="items" />
+    <v-parallax flat dark :src="image">
       <v-row align="center" justify="center">
-        <v-col class="text-center" cols="12">
+        <v-col class="text-center" cols="12" transition="slide-x-transition">
           <h1 v-if="person && person.fields.name" class="display-1 font-weight-thin ">
             {{ person.fields.name }}
           </h1>
@@ -13,9 +13,7 @@
         </v-col>
       </v-row>
     </v-parallax>
-    <v-container
-      class=" dark color-bl mb-10 container relative"
-    >
+    <v-container class=" dark color-bl mb-10 container relative">
       <v-row
         align="center"
         justify="center"
@@ -86,7 +84,7 @@
         </v-col> -->
       </v-row>
     </v-container>
-  </div>
+  </v-card>
 </template>
 
 <script>

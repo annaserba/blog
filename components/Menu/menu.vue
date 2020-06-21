@@ -1,46 +1,73 @@
 <template>
   <div>
-    <div v-if="!image" class="header">
-      <v-row align="start" justify="start" class="d-flex d-sm-none">
-        <v-col>
-          <v-app-bar-nav-icon color="white" class=" float-right" @click="drawer = true" />
-        </v-col>
-      </v-row>
-      <MenuItems :name="name" :items="items" />
-    </div>
     <v-app-bar
-      v-if="image"
+      absolute
       dark
+      fade-img-on-scroll
       :src="image"
     >
-      <MenuItems :name="name" :items="items" />
-      <v-app-bar-nav-icon color="white" class="d-flex d-sm-none float-right" @click="drawer = true" />
+      <v-spacer />
+      <v-tabs
+        style="width:auto"
+        right
+        class="pr-5"
+      >
+        <v-tab
+          v-for="item in items"
+          :key="item.sys.id"
+          nuxt
+          :to="($i18n.defaultLocale!=$i18n.locale?'/'+$i18n.locale:'')+'/'+(item.fields.slug?item.fields.slug:'')"
+          :active="!$route.path.toLowerCase().endsWith('/'+item.fields.slug)
+            || !$route.path.toLowerCase().endsWith('/'+$i18n.locale+'/'+item.fields.slug)"
+          class="d-none d-sm-flex"
+        >
+          {{ item.fields.name }}
+        </v-tab>
+      </v-tabs>
+      <v-app-bar-nav-icon class="d-flex d-sm-none" @click="drawer = true" />
+      <div class="float-right d-none d-sm-flex" style="width:64px">
+        <LangSwitch />
+      </div>
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
-      absolute
+      fixed
       temporary
       clipped-right
     >
-      <NavigationDrawer :name="name" :items="items" />
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item
+            v-for="item in items"
+            :key="item.sys.id"
+            class="pa-0 ma-0"
+          >
+            <v-btn
+              text
+              nuxt
+              block
+              class="pa-0"
+              :to="($i18n.defaultLocale!=$i18n.locale?'/'+$i18n.locale:'')+'/'+(item.fields.slug?item.fields.slug:'')"
+            >
+              {{ item.fields.name }}
+            </v-btn>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
     </v-navigation-drawer>
   </div>
 </template>
-<style scope>
-.header{
-  position: absolute;
-  z-index: 3;
-  width: 100%;
-  padding: 0 16px;
-}
-</style>
+
 <script>
-import MenuItems from '@/components/Menu/menuItems'
-import NavigationDrawer from '@/components/Menu/navigationDrawer'
+import LangSwitch from '@/components/Menu/langSwitch'
 export default {
   components: {
-    MenuItems,
-    NavigationDrawer
+    LangSwitch
   },
   props: {
     name: {
