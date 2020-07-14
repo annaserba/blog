@@ -49,6 +49,19 @@
             {{ $t('noFeed') }}
           </h1>
         </v-col>
+        <v-col
+          v-if="model&&model.fields.books"
+          cols="12"
+          align="center"
+        >
+          <h2>{{ model.fields.books.title }}</h2>
+          <iframe
+            v-for="book in model.fields.books.books"
+            :key="book.id"
+            style="border:none;height: 500px;width: 288px;"
+            :src="'/books?book='+book.id+'&id='+model.fields.books.id"
+          />
+        </v-col>
         <v-col v-if="model&&model.fields.commentStatus" cols="12">
           <v-card
             :loading="loading==true?'warning':false"
