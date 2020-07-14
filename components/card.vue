@@ -14,7 +14,7 @@
       {{ model.fields.title }}
     </v-card-title>
     <v-card-text
-      class="text--primary text-left"
+      class="text--primary text-left body-text"
     >
       <vue-markdown>{{ model.fields.body }}</vue-markdown>
       <div
@@ -71,3 +71,8 @@ export default {
   }
 }
 </script>
+<style>
+  .v-card ul{
+    margin-bottom: 10px;
+  }
+</style>
