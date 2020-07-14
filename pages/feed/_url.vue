@@ -83,12 +83,15 @@
         align="center"
       >
         <h2>{{ model.fields.books.title }}</h2>
-        <iframe
+        <a
           v-for="book in model.fields.books.books"
           :key="book.id"
-          :style="'border:none;height:'+book.height+';width:'+ book.width+';'"
-          :src="'/books?book='+book.id+'&id='+model.fields.books.id"
-        />
+          :href="'https://www.litres.ru/'+book.id+'/?lfrom='+model.fields.books.id"
+          target="_blank"
+        >
+          <img :src="book.img" :style="'height:'+book.height+';width:'+ book.width+';'">
+          <h5>{{ book.name }}</h5>
+        </a>
       </v-col>
     </v-row>
   </v-card>
