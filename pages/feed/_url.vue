@@ -86,7 +86,7 @@
         <iframe
           v-for="book in model.fields.books.books"
           :key="book.id"
-          style="border:none;height: 500px;width: 288px;"
+          :style="'border:none;height:'+book.height+';width:'+ book.width+';'"
           :src="'/books?book='+book.id+'&id='+model.fields.books.id"
         />
       </v-col>
