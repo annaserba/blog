@@ -1,91 +1,96 @@
 <template>
   <v-card flat :style="{'min-height':'100%'}">
     <Menu :name="name" :items="items" :image="image" />
-    <v-container
-      class="mt-14"
-      align-start
-      fill-height
-      align-content-start
-    >
-      <v-row>
-        <v-col cols="8">
-          <v-breadcrumbs :items="breadcrumbs" class="pl-1">
-            <template v-slot:divider>
-              <v-icon>mdi-chevron-right</v-icon>
-            </template>
-          </v-breadcrumbs>
-        </v-col>
-        <v-col cols="4">
-          <v-btn
-            class="mt-3 mr-1 float-right"
-            color="orange"
-            outlined
-            small
-            :to="'/blog'"
-          >
-            {{ $t('back') }}
-          </v-btn>
-        </v-col>
-        <v-col v-if="loading" cols="12">
-          <v-skeleton-loader
-            class="mx-auto"
-            type="card"
-            width="100%"
-          />
-        </v-col>
-        <v-col v-else-if="model" cols="12">
-          <Feed
-            :model="model"
-          />
-        </v-col>
-        <v-col
-          v-else-if="!loading"
-          cols="12"
-          align="center"
+    <v-row class="mt-14">
+      <v-col cols="12" :md="model&&model.fields.books?9:12">
+        <v-container
+          align-start
+          fill-height
+          align-content-start
         >
-          <h1
-            class="display-2 primary--text"
-          >
-            {{ $t('noFeed') }}
-          </h1>
-        </v-col>
-        <v-col
-          v-if="model&&model.fields.books"
-          cols="12"
-          align="center"
-        >
-          <h2>{{ model.fields.books.title }}</h2>
-          <iframe
-            v-for="book in model.fields.books.books"
-            :key="book.id"
-            style="border:none;height: 500px;width: 288px;"
-            :src="'/books?book='+book.id+'&id='+model.fields.books.id"
-          />
-        </v-col>
-        <v-col v-if="model&&model.fields.commentStatus" cols="12">
-          <v-card
-            :loading="loading==true?'warning':false"
-            tile
-            class="mx-auto mb-5"
-          >
-            <div
-              id="anycomment-app"
-              class="pl-4 pr-4 pb-5 pt-2"
-            />
-            <script v-if="model&&model.fields.commentStatus">
-              AnyComment = window.AnyComment || []; AnyComment.Comments = [];
-              AnyComment.Comments.push({
-              "root": "anycomment-app",
-              "app_id": 742,
-              "track_get_params": true,
-              "language": "ru"
-              })
-            </script>
-            <script v-if="model.fields.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
+          <v-row>
+            <v-col cols="8">
+              <v-breadcrumbs :items="breadcrumbs" class="pl-1">
+                <template v-slot:divider>
+                  <v-icon>mdi-chevron-right</v-icon>
+                </template>
+              </v-breadcrumbs>
+            </v-col>
+            <v-col cols="4">
+              <v-btn
+                class="mt-3 mr-1 float-right"
+                color="orange"
+                outlined
+                small
+                :to="'/blog'"
+              >
+                {{ $t('back') }}
+              </v-btn>
+            </v-col>
+            <v-col v-if="loading" cols="12">
+              <v-skeleton-loader
+                class="mx-auto"
+                type="card"
+                width="100%"
+              />
+            </v-col>
+            <v-col v-else-if="model" cols="12">
+              <Feed
+                :model="model"
+              />
+            </v-col>
+            <v-col
+              v-else-if="!loading"
+              cols="12"
+              align="center"
+            >
+              <h1
+                class="display-2 primary--text"
+              >
+                {{ $t('noFeed') }}
+              </h1>
+            </v-col>
+            <v-col v-if="model&&model.fields.commentStatus" cols="12">
+              <v-card
+                :loading="loading==true?'warning':false"
+                tile
+                class="mx-auto mb-5"
+              >
+                <div
+                  id="anycomment-app"
+                  class="pl-4 pr-4 pb-5 pt-2"
+                />
+                <script v-if="model&&model.fields.commentStatus">
+                  AnyComment = window.AnyComment || []; AnyComment.Comments = [];
+                  AnyComment.Comments.push({
+                  "root": "anycomment-app",
+                  "app_id": 742,
+                  "track_get_params": true,
+                  "language": "ru"
+                  })
+                </script>
+                <script v-if="model.fields.commentStatus" type="text/javascript" async src="https://cdn.anycomment.io/assets/js/launcher.js" />
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-col>
+      <v-col
+        v-if="model&&model.fields.books"
+        class="mt-6"
+        cols="12"
+        md="3"
+        align="center"
+      >
+        <h2>{{ model.fields.books.title }}</h2>
+        <iframe
+          v-for="book in model.fields.books.books"
+          :key="book.id"
+          style="border:none;height: 500px;width: 288px;"
+          :src="'/books?book='+book.id+'&id='+model.fields.books.id"
+        />
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8" />
