@@ -180,10 +180,7 @@ export default {
   head () {
     return {
       titleTemplate: '%s - Anna Serba',
-      title: this.$route.params.url,
-      meta: [
-        { hid: 'description', name: 'description', content:this.model&&this.model.fields.description? this.model.fields.description:"" }
-      ]
+      title: this.$route.params.url
     }
   }
 }
