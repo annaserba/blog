@@ -11,7 +11,9 @@
       :src="image"
     />
     <v-card-title>
-      {{ model.fields.title }}
+      <h1>
+        {{ model.fields.title }}
+      </h1>
     </v-card-title>
     <v-card-text
       class="text--primary text-left body-text"
