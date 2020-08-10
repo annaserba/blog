@@ -39,7 +39,7 @@
         :href="portfolioLink.fields.github"
         target="_blank"
       >
-        Github  <fa-icon class="ml-1" :icon="faGithub" />
+        Git  <fa-icon class="ml-1" :icon="faGithub" />
       </v-btn>
     </v-col>
   </v-row>
