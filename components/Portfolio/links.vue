@@ -35,11 +35,23 @@
         depressed
         tile
         small
-        class="float-right"
+        class="float-right ml-3"
         :href="portfolioLink.fields.github"
         target="_blank"
       >
         Git  <fa-icon class="ml-1" :icon="faGithub" />
+      </v-btn>
+      <v-btn
+        v-if="portfolioLink.fields.privateGit"
+        color="#24292e"
+        dark
+        depressed
+        tile
+        small
+        class="float-right ml-3"
+        target="_blank"
+      >
+        Private Git  <fa-icon class="ml-1" :icon="faGithub" />
       </v-btn>
     </v-col>
   </v-row>
